@@ -1,6 +1,6 @@
-class CreateCoronaStats < ActiveRecord::Migration[6.0]
+class CreateRawStats < ActiveRecord::Migration[6.0]
   def change
-    create_table :corona_stats do |t|
+    create_table :raw_stats do |t|
       t.integer :date
       t.string :state
       t.integer :positive

@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_023338) do
+ActiveRecord::Schema.define(version: 2020_03_18_033319) do
 
-  create_table "corona_stats", force: :cascade do |t|
+  create_table "processed_stats", force: :cascade do |t|
+    t.integer "date"
+    t.integer "state_id", null: false
+    t.integer "positive"
+    t.integer "negative"
+    t.integer "pending"
+    t.integer "death"
+    t.integer "total"
+    t.datetime "dateChecked"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_processed_stats_on_state_id"
+  end
+
+  create_table "raw_stats", force: :cascade do |t|
     t.integer "date"
     t.string "state"
     t.integer "positive"
@@ -32,4 +46,5 @@ ActiveRecord::Schema.define(version: 2020_03_18_023338) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "processed_stats", "states"
 end
