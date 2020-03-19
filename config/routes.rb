@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       
       
       get '/processed_stats', to: "processed_stat#index"
+      get '/states', to: "state#index"
      
     end
   end

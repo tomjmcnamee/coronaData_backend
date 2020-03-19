@@ -10,9 +10,11 @@ class TotalStat < ApplicationRecord
   # belongs_to :state
   
   def self.daily6pProcessingCron
-    RawStat.pullDaysData([@@currentDate])
-    self.addTotalStatToAppropriateRecord([@@currentDate])  
-    self.addNEWStatToAppropriateRecord([@@currentDate])
+    if !allDatesArr.include?(@@currentDate)
+      RawStat.pullAndProcessDaysData([@@currentDate])
+      self.addTotalStatToAppropriateRecord([@@currentDate])  
+      self.addNEWStatToAppropriateRecord([@@currentDate])
+    end ## ends if checking to see if current date is already in raw DB
   end
   
   def self.processALLData
