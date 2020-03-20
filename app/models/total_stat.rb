@@ -2,6 +2,7 @@
 class TotalStat < ApplicationRecord
   @@currentDate = Time.now.strftime("%Y%m%d").to_i
   @@allDatesArr = RawStat.distinct.pluck("date").sort
+  # @@allDatesArr = [20200317, 20200318]
   # @@allDatesArr.pop
   @@allStatesArr = RawStat.distinct.pluck("state").sort  - ["AS", "VI", "GU", "MP"]
   # @@allStatesArr = ["AL", "AR", "AK"]
@@ -17,8 +18,9 @@ class TotalStat < ApplicationRecord
     end ## ends if checking to see if current date is already in raw DB
   end
   
-  def self.processALLData
-  ### Creates one record per State + TotalCount Type combo (for both TOTAL and NEW nubmers)
+  def self.createDbRowsForStateNewAndTotalCombos
+    ### Creates one record per State + TotalCount Type combo (for both TOTAL and NEW nubmers)
+    ## Does not fetch data
     for state in @@allStatesArr do
       for t in @@allCountTypesArr do
         ProcessedStat.create(state_id: State.find_by(state_abbreviation: state).id, count_type: "#{"total-" + t}")
@@ -27,6 +29,13 @@ class TotalStat < ApplicationRecord
         end
       end
     end
+  end
+
+
+  def self.processALLData
+    ### Creates one record per State + TotalCount Type combo (for both TOTAL and NEW nubmers)
+    ## Does not fetch data
+    self.createDbRowsForStateNewAndTotalCombos
     #### Adds the TOTAL stat to the appropriate record and date intersection for TOTAL numbers   
     self.addTotalStatToAppropriateRecord(@@allDatesArr)  
     #### Adds the NEW stat to the appropriate record and date intersection for NEW numbers   

@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2020_03_18_034005) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "processed_stats", force: :cascade do |t|
-    t.integer "state_id", null: false
+    t.bigint "state_id", null: false
     t.string "count_type"
     t.integer "20200304"
     t.integer "20200305"
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_034005) do
 
   create_table "total_stats", force: :cascade do |t|
     t.integer "date"
-    t.integer "state_id", null: false
+    t.bigint "state_id", null: false
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
