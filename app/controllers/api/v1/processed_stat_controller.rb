@@ -18,8 +18,8 @@ class Api::V1::ProcessedStatController < ApplicationController
         # debugger
         render json: {
             allDatesArr: allDatesArr,
-            allTOTALStats:allTOTALStats,
-            allNEWStats: allNEWStats,
+            # allTOTALStats:allTOTALStats,
+            # allNEWStats: allNEWStats,
             newPositive:newPositive,
             newNegative:newNegative,
             newDeath: newDeath,
