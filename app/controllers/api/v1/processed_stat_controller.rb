@@ -15,6 +15,7 @@ class Api::V1::ProcessedStatController < ApplicationController
         totalTotal = allTOTALStats.where(count_type: "total-total")
 
 
+
         # debugger
         render json: {
             allDatesArr: allDatesArr,
@@ -29,10 +30,6 @@ class Api::V1::ProcessedStatController < ApplicationController
             totalPending:totalPending,
             totalDeath: totalDeath,
             totalTotal: totalTotal
-
-
-       
-       
         }   
 
         

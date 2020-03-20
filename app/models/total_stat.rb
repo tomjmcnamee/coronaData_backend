@@ -3,7 +3,7 @@ class TotalStat < ApplicationRecord
   @@currentDate = Time.now.strftime("%Y%m%d").to_i
   @@allDatesArr = RawStat.distinct.pluck("date").sort
   # @@allDatesArr.pop
-  @@allStatesArr = RawStat.distinct.pluck("state").sort
+  @@allStatesArr = RawStat.distinct.pluck("state").sort  - ["AS", "VI", "GU", "MP"]
   # @@allStatesArr = ["AL", "AR", "AK"]
   @@allCountTypesArr = [ "positive", "negative", "pending", "death", "total"]
   
