@@ -1,3 +1,4 @@
+require 'open-uri'
 
 class TotalStat < ApplicationRecord
   @@currentDate = Time.now.strftime("%Y%m%d").to_i
@@ -10,12 +11,18 @@ class TotalStat < ApplicationRecord
   
   # belongs_to :state
   
-  def self.daily6pProcessingCron
+  def self.daily5pProcessingCron
     if !@@allDatesArr.include?(@@currentDate)
       RawStat.pullAndProcessDaysData([@@currentDate])
       self.addTotalStatToAppropriateRecord([@@currentDate])  
       self.addNEWStatToAppropriateRecord([@@currentDate])
     end ## ends if checking to see if current date is already in raw DB
+  end
+  
+  def self.bulkDataPullAndUpdate(arrOfDatesToProcess)
+      # RawStat.pullAndProcessDaysData(arrOfDatesToProcess)
+      self.addTotalStatToAppropriateRecord(arrOfDatesToProcess)  
+      self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)
   end
   
   def self.createDbRowsForStateNewAndTotalCombos
