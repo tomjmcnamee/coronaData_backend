@@ -6,6 +6,7 @@ class CreateRawStats < ActiveRecord::Migration[6.0]
       t.integer :positive
       t.integer :negative
       t.integer :pending
+      t.integer :hospitalized
       t.integer :death
       t.integer :total
       t.datetime :dateChecked
