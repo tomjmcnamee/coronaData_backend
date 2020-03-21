@@ -47,7 +47,7 @@ class Api::V1::DbUpdateController < ApplicationController
             datesArr = request.headers["DatesArr"].split(",").map { |date| date.to_i }
             # datesArr = request.params[:dates].split(",").map { |date| date.to_i }
 
-            RawStat.pullAndProcessDaysData(datesArr)
+            # RawStat.pullAndProcessDaysData(datesArr)
             TotalStat.addTotalStatToAppropriateRecord(datesArr)  
             TotalStat.addNEWStatToAppropriateRecord(datesArr)
             
