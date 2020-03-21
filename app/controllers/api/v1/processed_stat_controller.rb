@@ -1,9 +1,10 @@
 class Api::V1::ProcessedStatController < ApplicationController
+
     def index  
+        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
 
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
-        allDatesArr = RawStat.distinct.pluck("date").sort
-            
+            allDatesArr = RawStat.distinct.pluck("date").sort
             allNEWStats = ProcessedStat.where("count_type LIKE ?", "new-%").sort { |x,y| x.state_id <=> y.state_id }
             newPositive , newNegative, newDeath, newTotal = [], [],[ ], []
             allNEWStats.each do |obj|
@@ -46,6 +47,11 @@ class Api::V1::ProcessedStatController < ApplicationController
                 totalDeath: totalDeath,
                 totalTotal: totalTotal
             }   
+            # debugger
+            updateLogger.info {"Successful GET fetch from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
+        else
+            updateLogger.error { "Bad GET Fetch pW attempt  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
+            
         end  ## Ends IF STatement about fetch password
         
     end  # Ends index method
