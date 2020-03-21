@@ -17,18 +17,18 @@ class Api::V1::DbUpdateController < ApplicationController
     # end  # Ends createDbRecordsDOONLYONCE method
 
     def Daily5pUpdate
-
-        @@currentDate = Time.now.strftime("%Y%m%d").to_i
+        allDatesArr = RawStat.distinct.pluck("date").sort
+        currentDate = Time.now.strftime("%Y%m%d").to_i
         updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
 
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
             ## Creates DB Rows - 1 per state+new/TotalDataType combo
             # TotalStat.daily5pProcessingCron
 
-            if !@@allDatesArr.include?(@@currentDate)
-                RawStat.pullAndProcessDaysData([@@currentDate])
-                TotalStat.addTotalStatToAppropriateRecord([@@currentDate])  
-                TotalStat.addNEWStatToAppropriateRecord([@@currentDate])
+            if !allDatesArr.include?(currentDate)
+                RawStat.pullAndProcessDaysData([currentDate])
+                TotalStat.addTotalStatToAppropriateRecord([currentDate])  
+                TotalStat.addNEWStatToAppropriateRecord([currentDate])
             end
 
             render json: {  status: "Success: Days Data Added"  }
