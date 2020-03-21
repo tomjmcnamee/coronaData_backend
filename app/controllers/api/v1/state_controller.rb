@@ -1,11 +1,12 @@
 class Api::V1::StateController < ApplicationController
     def index  
-        allStates = State.all
+        if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
+            allStates = State.all
 
-        render json: {
-            allStates: allStates
-        }   
-
+            render json: {
+                allStates: allStates
+            }   
+        end
         
     end
 
