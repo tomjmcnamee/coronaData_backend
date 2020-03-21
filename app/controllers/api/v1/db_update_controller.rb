@@ -26,7 +26,7 @@ class Api::V1::DbUpdateController < ApplicationController
             # TotalStat.daily5pProcessingCron
 
             if !@@allDatesArr.include?(@@currentDate)
-                RawStat.pullAndProcessDaysData([@@currentDate])
+                # RawStat.pullAndProcessDaysData([@@currentDate])
                 TotalStat.addTotalStatToAppropriateRecord([@@currentDate])  
                 TotalStat.addNEWStatToAppropriateRecord([@@currentDate])
             end
