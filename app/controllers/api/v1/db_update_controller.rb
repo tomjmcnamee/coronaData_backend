@@ -17,6 +17,8 @@ class Api::V1::DbUpdateController < ApplicationController
     # end  # Ends createDbRecordsDOONLYONCE method
 
     def Daily5pUpdate
+        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
             ## Creates DB Rows - 1 per state+new/TotalDataType combo
             TotalStat.daily5pProcessingCron
@@ -30,6 +32,8 @@ class Api::V1::DbUpdateController < ApplicationController
     end  # Ends Daily5pUpdate method
     
     def BulkLoadDatesData
+        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+
         if request.headers["BulkLoad"] === ENV["BULKLOAD_PASSWORD"]
             datesArr = request.headers["DatesArr"].split(",").map { |date| date.to_i }
             TotalStat.bulkDataPullAndUpdate(datesArr)

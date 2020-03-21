@@ -30,8 +30,9 @@ class Api::V1::ProcessedStatController < ApplicationController
                 totalPending << obj if obj.count_type == 'total-pending'
             end # Ends EACH Loop
 
-
-
+            
+            
+            updateLogger.info {"Successful GET fetch from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             # debugger
             render json: {
                 allDatesArr: allDatesArr,
@@ -48,7 +49,6 @@ class Api::V1::ProcessedStatController < ApplicationController
                 totalTotal: totalTotal
             }   
             # debugger
-            updateLogger.info {"Successful GET fetch from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
             updateLogger.error { "Bad GET Fetch pW attempt  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
             
