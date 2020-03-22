@@ -4,7 +4,8 @@ Rails.application.routes.draw do
       
       
       
-      get '/processed_stats', to: "processed_stat#index"
+      get '/total_stats', to: "processed_stat#indexTotal"
+      get '/new_stats', to: "processed_stat#indexNew"
       get '/states', to: "state#index"
       patch '/daily_5p_update', to: "db_update#Daily5pUpdate"
       patch '/bulk_load_arr_of_dates', to: "db_update#BulkLoadDatesData"

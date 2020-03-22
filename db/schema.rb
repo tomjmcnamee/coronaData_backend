@@ -332,6 +332,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_034005) do
     t.integer "positive"
     t.integer "negative"
     t.integer "pending"
+    t.integer "hospitalized"
     t.integer "death"
     t.integer "total"
     t.datetime "dateChecked"

@@ -11,7 +11,7 @@ class RawStat < ApplicationRecord
   end 
 
   def self.pullAndProcessDaysData(arrOfDatesToProcess)
-    for d in arrOfDatesToProcess
+    for d in arrOfDatesToProcess do
       jsonData = JSON.load(open("https://covidtracking.com/api/states/daily?date=#{d}"))
       ##Inserts ALL data into the Stats table.
       if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)

@@ -20,9 +20,7 @@ class TotalStat < ApplicationRecord
   end
   
   def self.bulkDataPullAndUpdate(arrOfDatesToProcess)
-      RawStat.pullAndProcessDaysData(arrOfDatesToProcess)
-      self.addTotalStatToAppropriateRecord(arrOfDatesToProcess)  
-      self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)
+      RawStat.pullAndProcessDaysData(arrOfDatesToProcess) && self.addTotalStatToAppropriateRecord(arrOfDatesToProcess) && self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)
   end
   
   def self.createDbRowsForStateNewAndTotalCombos
