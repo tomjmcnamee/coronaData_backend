@@ -58,6 +58,21 @@ class Api::V1::DbUpdateController < ApplicationController
             updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
         end  ## Ends IF STatement about fetch password  
     end  # Ends BulkLoadDatesData method
+    
+    def refreshAllData
+        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+
+        if request.headers["RefreshData"] === ENV["REFRESHDATA_PASSWORD"]
+            RawStat.delete_all
+            RawStat.pullALLData
+            TotalStat.processALLDataWithoutCreatingNewRows
+            
+            updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
+            render json: {  status: "Success: All Data Refreshed"  }
+        else
+            updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
+        end  ## Ends IF STatement about fetch password  
+    end  # Ends BulkLoadDatesData method
 
     
 

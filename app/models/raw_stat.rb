@@ -1,13 +1,16 @@
-require 'nokogiri'
-require 'open-uri'
 
 class RawStat < ApplicationRecord
+  require 'nokogiri'
+  require 'open-uri'
   def self.pullALLData
     jsonData = JSON.load(open("https://covidtracking.com/api/states/daily.json"))
+    puts "raw data #{jsonData}"
     ##Inserts ALL data into the Stats table.
-    jsonData.each { |x| 
-    RawStat.create(x) 
-    }
+    if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
+      jsonData.each { |x| 
+      RawStat.create(x) 
+      }
+    end
   end 
 
   def self.pullAndProcessDaysData(arrOfDatesToProcess)

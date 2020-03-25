@@ -46,6 +46,13 @@ class TotalStat < ApplicationRecord
     #### Adds the NEW stat to the appropriate record and date intersection for NEW numbers   
     self.addNEWStatToAppropriateRecord(@@allDatesArr)  
   end ## ends processALLData function
+  
+  def self.processALLDataWithoutCreatingNewRows
+    #### Adds the TOTAL stat to the appropriate record and date intersection for TOTAL numbers   
+    self.addTotalStatToAppropriateRecord(@@allDatesArr)  
+    #### Adds the NEW stat to the appropriate record and date intersection for NEW numbers   
+    self.addNEWStatToAppropriateRecord(@@allDatesArr)  
+  end ## ends processALLData function
 
   def self.addTotalStatToAppropriateRecord(arrOfDatesToProcess)  
     for s in @@allStatesArr do

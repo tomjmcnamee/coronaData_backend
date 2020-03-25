@@ -2,6 +2,7 @@ class Api::V1::ProcessedStatController < ApplicationController
 
     def indexTotal  
         updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+        config.updateLogger = Logger.new(STDOUT)
 
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
             allDatesArr = RawStat.distinct.pluck("date").sort
