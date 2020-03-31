@@ -5,7 +5,7 @@ class Api::V1::ProcessedStatController < ApplicationController
         config.updateLogger = Logger.new(STDOUT)
 
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
-            allDatesArr = RawStat.distinct.pluck("date").sort
+            allDatesArr = RawStat.distinct.pluck("date").sort.reverse
             allTOTALStats = ProcessedStat.where("count_type LIKE ?", "total-%").sort { |x,y| x.state_id <=> y.state_id }
             totalPositive , totalNegative, totalDeath, totalTotal, totalPending = [], [], [], [], []
             allTOTALStats.each do |obj|
