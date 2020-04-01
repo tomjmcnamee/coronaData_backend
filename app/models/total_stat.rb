@@ -8,7 +8,7 @@ class TotalStat < ApplicationRecord
   @@allStatesArr = RawStat.distinct.pluck("state").sort  - ["AS", "VI", "GU", "MP"]
   # @@allStatesArr.push("AS", "VI", "GU", "MP")
   # @@allStatesArr = ["AL", "AR", "AK"]
-  @@allCountTypesArr = [ "positive", "negative", "pending", "death", "total"]
+  @@allCountTypesArr = [ "positive", "negative", "death", "total"]
   
   # belongs_to :state
   
