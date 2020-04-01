@@ -6,6 +6,7 @@ class TotalStat < ApplicationRecord
   # @@allDatesArr = [20200317, 20200318]
   # @@allDatesArr.pop
   @@allStatesArr = RawStat.distinct.pluck("state").sort  - ["AS", "VI", "GU", "MP"]
+  @@allStatesArr.push("AS", "VI", "GU", "MP")
   # @@allStatesArr = ["AL", "AR", "AK"]
   @@allCountTypesArr = [ "positive", "negative", "pending", "death", "total"]
   
