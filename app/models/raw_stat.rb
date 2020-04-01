@@ -42,7 +42,7 @@ class RawStat < ApplicationRecord
         jsonData.each { |x| 
           # RawStat.create(x) 
             pending = 0
-          if !!x.pending
+          if !!x["pending"]
             pending = x["pending"]
           end
           RawStat.create(
