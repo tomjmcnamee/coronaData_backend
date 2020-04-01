@@ -9,7 +9,10 @@ class TotalStat < ApplicationRecord
   # @@allStatesArr.push("AS", "VI", "GU", "MP")
   # @@allStatesArr = ["AL", "AR", "AK"]
   @@allCountTypesArr = [ "positive", "negative", "death", "total"]
-  
+  @@newCountTypesArr = [ "deathIncrease","negativeIncrease","positiveIncrease","totalTestResultsIncrease"]
+ 
+
+
   # belongs_to :state
   
   def self.daily5pProcessingCron
@@ -76,34 +79,58 @@ class TotalStat < ApplicationRecord
   def self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  
     for s in @@allStatesArr do
       for d in arrOfDatesToProcess do
-        for typObj in @@allCountTypesArr do
-          if typObj != "pending"
-            ## First block gathers newCountVal
-            ## Checks to see if current day is the first in @@the array
-            if d === @@allDatesArr[0]
-              newCountVal = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
-            else
-              previousDate = @@allDatesArr[@@allDatesArr.index(d - 1)]
-              previousDateCount = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[previousDate]
-              if !!previousDateCount 
-                currentDateCount = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
-                if !currentDateCount
-                  currentDateCount = previousDateCount
-                end
-                newCountVal = currentDateCount - previousDateCount
-              else 
-                newCountVal = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
-              end ## ends IF related to Current Date Count being nil
-            end ## Ends if statement checking to see if d is the first day in @@array
-            if !!newCountVal
-              recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj}")
-              recToUpdate.update( "#{d}": newCountVal )
-            end ## ends newCountVal IF statement
-          end ## ends IF only procssing non-pending types
-        end ## ends allCountTypesArr each loop
+        for typObj in @@newCountTypesArr do
+          tempObj = RawStat.find_by(date: "#{d}", state: "#{s}" )
+          if !!tempObj
+            tempval = tempObj[typObj]
+            if !!tempval
+              if tempObj == "totalTestResultsIncrease"
+                recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj.chomp('TestResultsIncrease')}")
+              else
+                recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj.chomp('Increase')}")
+              end
+              if !! recToUpdate
+                recToUpdate.update( "#{d}": tempval )
+              end
+            end ## ends tempval IF statement
+          end ## ends tempObj IF statement
+        end ## ends newCountTypesArr each loop
       end ## ends allDatesArr each loop
     end ## ends allStatesArr each loop
   end ## ends addTotalStatToAppropriateRecord method
+
+
+  # def self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  
+  #   for s in @@allStatesArr do
+  #     for d in arrOfDatesToProcess do
+  #       for typObj in @@allCountTypesArr do
+  #         if typObj != "pending"
+  #           ## First block gathers newCountVal
+  #           ## Checks to see if current day is the first in @@the array
+  #           if d === @@allDatesArr[0]
+  #             newCountVal = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
+  #           else
+  #             previousDate = @@allDatesArr[@@allDatesArr.index(d - 1)]
+  #             previousDateCount = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[previousDate]
+  #             if !!previousDateCount 
+  #               currentDateCount = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
+  #               if !currentDateCount
+  #                 currentDateCount = previousDateCount
+  #               end
+  #               newCountVal = currentDateCount - previousDateCount
+  #             else 
+  #               newCountVal = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"total-" + typObj}")[d]
+  #             end ## ends IF related to Current Date Count being nil
+  #           end ## Ends if statement checking to see if d is the first day in @@array
+  #           if !!newCountVal
+  #             recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj}")
+  #             recToUpdate.update( "#{d}": newCountVal )
+  #           end ## ends newCountVal IF statement
+  #         end ## ends IF only procssing non-pending types
+  #       end ## ends allCountTypesArr each loop
+  #     end ## ends allDatesArr each loop
+  #   end ## ends allStatesArr each loop
+  # end ## ends addTotalStatToAppropriateRecord method
 
 
 

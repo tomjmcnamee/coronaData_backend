@@ -9,10 +9,10 @@ class RawStat < ApplicationRecord
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
       jsonData.each { |x| 
         # RawStat.create(x) 
-        pending = 0
-        if !!x.pending
-          pending = x["pending"]
-        end
+        # pending = 0
+        # if !!x.pending
+        #   pending = x["pending"]
+        # end
         RawStat.create(
           date: x["date"],
           state: x["state"],
