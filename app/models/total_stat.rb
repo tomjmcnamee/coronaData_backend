@@ -85,7 +85,7 @@ class TotalStat < ApplicationRecord
             tempval = tempObj[typObj]
             if !!tempval
               if tempObj == "totalTestResultsIncrease"
-                recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj.chomp('TestResultsIncrease')}")
+                recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "new-total")
               else
                 recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj.chomp('Increase')}")
               end
