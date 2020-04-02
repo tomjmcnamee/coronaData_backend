@@ -1,6 +1,6 @@
 class Api::V1::DbUpdateController < ApplicationController
 
-    updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+    # updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
 
 
     # def createDbRecordsDOONLYONCE
@@ -33,15 +33,15 @@ class Api::V1::DbUpdateController < ApplicationController
 
             render json: {  status: "Success: Days Data Added"  }
             
-            updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
+            # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
-            updateLogger.error { "Bad PATCH PW attempt for daily5pUpdate  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
+            # updateLogger.error { "Bad PATCH PW attempt for daily5pUpdate  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
 
         end  ## Ends IF STatement about fetch password  
     end  # Ends Daily5pUpdate method
     
     def BulkLoadDatesData
-        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+        # updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
 
         if request.headers["BulkLoad"] === ENV["BULKLOAD_PASSWORD"]
             datesArr = request.headers["DatesArr"].split(",").map { |date| date.to_i }
@@ -52,15 +52,15 @@ class Api::V1::DbUpdateController < ApplicationController
             TotalStat.addTotalStatToAppropriateRecord(datesArr)  
             TotalStat.addNEWStatToAppropriateRecord(datesArr)
             
-            updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
+            # updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: Data For the passed Dates Array has been pulled and Added"  }
         else
-            updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
+            # updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
         end  ## Ends IF STatement about fetch password  
     end  # Ends BulkLoadDatesData method
     
     def refreshAllData
-        updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
+        # updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
 
         if request.headers["RefreshData"] === ENV["REFRESHDATA_PASSWORD"]
             RawStat.delete_all
@@ -70,7 +70,7 @@ class Api::V1::DbUpdateController < ApplicationController
             updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: All Data Refreshed"  }
         else
-            updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
+            # updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
         end  ## Ends IF STatement about fetch password  
     end  # Ends BulkLoadDatesData method
 

@@ -26,19 +26,19 @@ class TotalStat < ApplicationRecord
   def self.bulkDataPullAndUpdate(arrOfDatesToProcess)
       RawStat.pullAndProcessDaysData(arrOfDatesToProcess) && self.addTotalStatToAppropriateRecord(arrOfDatesToProcess) && self.addNEWStatToAppropriateRecord(arrOfDatesToProcess)
   end
-  
-  def self.createDbRowsForStateNewAndTotalCombos
-    ### Creates one record per State + TotalCount Type combo (for both TOTAL and NEW nubmers)
-    ## Does not fetch data
-    for state in @@allStatesArr do
-      for t in @@allCountTypesArr do
-        ProcessedStat.create(state_id: State.find_by(state_abbreviation: state).id, count_type: "#{"total-" + t}")
-        if t != "pending"
-          ProcessedStat.create(state_id: State.find_by(state_abbreviation: state).id, count_type: "#{"new-" + t}")
-        end
-      end
-    end
-  end
+
+  ### DEPRICATED - DB Rows are created via SEEDS now  
+  # def self.createDbRowsForStateNewAndTotalCombos
+  #   ### Creates one record per State + TotalCount Type combo (for both TOTAL and NEW nubmers)
+  #   ## Does not fetch data
+  #   for state in @@allStatesArr do
+  #     for t in @@allCountTypesArr do
+  #       ProcessedStat.create(state_id: State.find_by(state_abbreviation: state).id, count_type: "#{"total-" + t}")
+  #       ProcessedStat.create(state_id: State.find_by(state_abbreviation: state).id, count_type: "#{"new-" + t}")
+
+  #     end
+  #   end
+  # end
 
 
   def self.processALLData
@@ -84,7 +84,7 @@ class TotalStat < ApplicationRecord
           if !!tempObj
             tempval = tempObj[typObj]
             if !!tempval
-              if tempObj == "totalTestResultsIncrease"
+              if typObj == "totalTestResultsIncrease"
                 recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "new-total")
               else
                 recToUpdate = ProcessedStat.find_by(state_id: State.find_by(state_abbreviation: "#{s}").id, count_type: "#{"new-" + typObj.chomp('Increase')}")

@@ -7,19 +7,17 @@ class Api::V1::ProcessedStatController < ApplicationController
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
             allDatesArr = RawStat.distinct.pluck("date").sort.reverse
             allTOTALStats = ProcessedStat.where("count_type LIKE ?", "total-%").sort { |x,y| x.state_id <=> y.state_id }
-            totalPositive , totalNegative, totalDeath, totalTotal, totalPending = [], [], [], [], []
+            totalPositive , totalNegative, totalDeath, totalTotal= [], [], [], []
             allTOTALStats.each do |obj|
                 totalPositive << obj if obj.count_type == 'total-positive'
                 totalNegative << obj if obj.count_type == 'total-negative'
                 totalDeath << obj if obj.count_type == 'total-death'
                 totalTotal << obj if obj.count_type == 'total-total'
-                totalPending << obj if obj.count_type == 'total-pending'
             end # Ends EACH Loop
             render json: {
                 allDatesArr: allDatesArr,
                 totalPositive:totalPositive,
                 totalNegative:totalNegative,
-                totalPending:totalPending,
                 totalDeath: totalDeath,
                 totalTotal: totalTotal
             }   

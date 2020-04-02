@@ -74,9 +74,7 @@ puts "CREATE DB ROW Records -- START"
 for state in State.all do
   for t in [ "positive", "negative", "pending", "death", "total"] do
     ProcessedStat.create(state_id: state.id, count_type: "#{"total-" + t}")
-    if t != "pending"
-      ProcessedStat.create(state_id: state.id, count_type: "#{"new-" + t}")
-    end
+    ProcessedStat.create(state_id: state.id, count_type: "#{"new-" + t}")
   end
 end
 puts "CREATE DB ROW Records -- END"
