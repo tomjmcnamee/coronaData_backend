@@ -8,8 +8,8 @@ class TotalStat < ApplicationRecord
   @@allStatesArr = RawStat.distinct.pluck("state").sort  - ["AS", "VI", "GU", "MP"]
   # @@allStatesArr.push("AS", "VI", "GU", "MP")
   # @@allStatesArr = ["AL", "AR", "AK"]
-  @@allCountTypesArr = [ "positive", "negative", "death", "total"]
-  @@newCountTypesArr = [ "deathIncrease","negativeIncrease","positiveIncrease","totalTestResultsIncrease"]
+  @@allCountTypesArr = [ "positive", "negative", "death", "total", "hospitalized"]
+  @@newCountTypesArr = [ "deathIncrease","negativeIncrease","positiveIncrease", "hospitalizedIncrease", "totalTestResultsIncrease"]
  
 
 

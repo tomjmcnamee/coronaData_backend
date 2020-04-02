@@ -8,6 +8,11 @@ class CreateRawStats < ActiveRecord::Migration[6.0]
       t.integer :hospitalized
       t.integer :death
       t.integer :total
+      t.integer :deathIncrease
+      t.integer :hospitalizedIncrease
+      t.integer :negativeIncrease
+      t.integer :positiveIncrease
+      t.integer :totalTestResultsIncrease
       t.datetime :dateChecked
 
       t.timestamps
