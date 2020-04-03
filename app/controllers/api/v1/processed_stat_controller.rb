@@ -35,6 +35,7 @@ class Api::V1::ProcessedStatController < ApplicationController
 
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
             allNEWStats = ProcessedStat.where("count_type LIKE ?", "new-%").sort { |x,y| x.state_id <=> y.state_id }
+            stayAtHomeOrders = StayAtHomeOrder.all
             newPositive , newNegative, newDeath, newTotal, newHospitalized = [], [],[ ], [], []
             allNEWStats.each do |obj|
                 newPositive << obj if obj.count_type == 'new-positive'
@@ -50,7 +51,8 @@ class Api::V1::ProcessedStatController < ApplicationController
                 newNegative:newNegative,
                 newDeath: newDeath,
                 newTotal: newTotal,
-                newHospitalized: newHospitalized
+                newHospitalized: newHospitalized,
+                stayAtHomeOrders: stayAtHomeOrders
             }   
             # updateLogger.info {"Successful GET fetch from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
