@@ -1,9 +1,9 @@
-class CreateTotalStats < ActiveRecord::Migration[6.0]
+class CreateStayAtHomeOrders < ActiveRecord::Migration[6.0]
   def change
-    create_table :total_stats do |t|
+    create_table :stay_at_home_orders do |t|
       t.integer :date
       t.references :state, null: false, foreign_key: true
-      t.integer :count
+      t.string :type
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_034005) do
+ActiveRecord::Schema.define(version: 2020_04_03_040753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2020_03_18_034005) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "stay_at_home_orders", force: :cascade do |t|
+    t.integer "date"
+    t.bigint "state_id", null: false
+    t.string "order_action"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_stay_at_home_orders_on_state_id"
+  end
+
   create_table "total_stats", force: :cascade do |t|
     t.integer "date"
     t.bigint "state_id", null: false
@@ -116,5 +125,6 @@ ActiveRecord::Schema.define(version: 2020_03_18_034005) do
   end
 
   add_foreign_key "processed_stats", "states"
+  add_foreign_key "stay_at_home_orders", "states"
   add_foreign_key "total_stats", "states"
 end

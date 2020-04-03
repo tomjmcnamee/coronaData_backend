@@ -78,3 +78,62 @@ for state in State.all do
   end
 end
 puts "CREATE DB ROW Records -- END"
+
+puts "Stay At Home Order -- START"
+StayAtHomeOrder.create!(date: 20200324, state_id: 1,  order_action: "imposed")  ## Alabama
+StayAtHomeOrder.create!(date: 20200328, state_id: 2,  order_action: "imposed")  ## Alaska
+StayAtHomeOrder.create!(date: 20200331, state_id: 3,  order_action: "imposed")  ## Arizona
+# StayAtHomeOrder.create!(date: , state_id: 4,  order_action: "imposed")  ## Arkansas
+StayAtHomeOrder.create!(date: 20200331, state_id: 5,  order_action: "imposed")  ## California
+StayAtHomeOrder.create!(date: 20200326, state_id: 6, order_action: "imposed")  ## Colorado
+StayAtHomeOrder.create!(date: 20200323, state_id: 7, order_action: "imposed")  ## Connecticut
+StayAtHomeOrder.create!(date: 20200324, state_id: 8, order_action: "imposed")  ## Delaware
+StayAtHomeOrder.create!(date: 20200403, state_id: 9, order_action: "imposed")  ## Florida
+StayAtHomeOrder.create!(date: 20200403, state_id: 10, order_action: "imposed")  ## Georgia
+StayAtHomeOrder.create!(date: 20200325, state_id: 11, order_action: "imposed")  ## Hawaii
+StayAtHomeOrder.create!(date: 20200325, state_id: 12, order_action: "imposed")  ## Idaho
+StayAtHomeOrder.create!(date: 20200321, state_id: 13, order_action: "imposed")  ## Illinois
+StayAtHomeOrder.create!(date: 20200324, state_id: 14, order_action: "imposed")  ## Indiana
+# StayAtHomeOrder.create!(date: , state_id: 15, order_action: "imposed")  ## Iowa
+StayAtHomeOrder.create!(date: 20200330, state_id: 16, order_action: "imposed")  ## Kansas
+StayAtHomeOrder.create!(date: 20200326, state_id: 17, order_action: "imposed")  ## Kentucky
+StayAtHomeOrder.create!(date: 20200323, state_id: 18, order_action: "imposed")  ## Louisiana
+StayAtHomeOrder.create!(date: 20200402, state_id: 19, order_action: "imposed")  ## Maine
+StayAtHomeOrder.create!(date: 20200330, state_id: 20, order_action: "imposed")  ## Maryland
+StayAtHomeOrder.create!(date: 20200324, state_id: 21, order_action: "imposed")  ## Massachusetts
+StayAtHomeOrder.create!(date: 20200324, state_id: 22, order_action: "imposed")  ## Michigan
+StayAtHomeOrder.create!(date: 20200327, state_id: 23, order_action: "imposed")  ## Minnesota
+StayAtHomeOrder.create!(date: 20200403, state_id: 24, order_action: "imposed")  ## Mississippi
+# StayAtHomeOrder.create!(date: , state_id: 25, order_action: "imposed")  ## Missouri
+StayAtHomeOrder.create!(date: 20200328, state_id: 26, order_action: "imposed")  ## Montana
+# StayAtHomeOrder.create!(date: , state_id: 27, order_action: "imposed")  ## Nebraska
+StayAtHomeOrder.create!(date: 20200401, state_id: 28, order_action: "imposed")  ## Nevada
+StayAtHomeOrder.create!(date: 20200327, state_id: 29, order_action: "imposed")  ## New Hampshire
+StayAtHomeOrder.create!(date: 20200321, state_id: 30, order_action: "imposed")  ## New Jersey
+StayAtHomeOrder.create!(date: 20200324, state_id: 31, order_action: "imposed")  ## New Mexico
+StayAtHomeOrder.create!(date: 20200322, state_id: 32, order_action: "imposed")  ## New York
+StayAtHomeOrder.create!(date: 20200330, state_id: 33, order_action: "imposed")  ## North Carolina
+# StayAtHomeOrder.create!(date: , state_id: 34, order_action: "imposed")  ## North Dakota
+StayAtHomeOrder.create!(date: 20200323, state_id: 35, order_action: "imposed")  ## Ohio
+# StayAtHomeOrder.create!(date: , state_id: 36, order_action: "imposed")  ## Oklahoma
+StayAtHomeOrder.create!(date: 20200323, state_id: 37, order_action: "imposed")  ## Oregon
+StayAtHomeOrder.create!(date: 20200401, state_id: 38, order_action: "imposed")  ## Pennsylvania
+StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  ## Rhode Island
+# StayAtHomeOrder.create!(date: , state_id: 40, order_action: "imposed")  ## South Carolina
+# StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
+StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
+# StayAtHomeOrder.create!(date: , state_id: 43, order_action: "imposed")  ## Texas
+# StayAtHomeOrder.create!(date: , state_id: 44, order_action: "imposed")  ## Utah
+StayAtHomeOrder.create!(date: 20200325, state_id: 45, order_action: "imposed")  ## Vermont
+StayAtHomeOrder.create!(date: 20200330, state_id: 46, order_action: "imposed")  ## Virginia
+StayAtHomeOrder.create!(date: 20200323, state_id: 47, order_action: "imposed")  ## Washington
+StayAtHomeOrder.create!(date: 20200401, state_id: 48, order_action: "imposed")  ## Washington DC
+StayAtHomeOrder.create!(date: 20200324, state_id: 49, order_action: "imposed")  ## West Virginia
+StayAtHomeOrder.create!(date: 20200325, state_id: 50, order_action: "imposed")  ## Wisconsin
+# StayAtHomeOrder.create!(date: , state_id: 51, order_action: "imposed")  ## Wyoming
+# StayAtHomeOrder.create!(date: , state_id: 52, order_action: "imposed")  ## American Samoa
+StayAtHomeOrder.create!(date: 20200315, state_id: 53, order_action: "imposed")  ## Puerto Rico
+# StayAtHomeOrder.create!(date: , state_id: 54, order_action: "imposed")  ## US Virgin Islands
+# StayAtHomeOrder.create!(date: , state_id: 55, order_action: "imposed")  ## Guam
+# StayAtHomeOrder.create!(date: , state_id: 56, order_action: "imposed")  ## Northern Mariana islands
+puts "Stay At Home Order -- End"
