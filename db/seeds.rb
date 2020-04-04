@@ -104,7 +104,7 @@ StayAtHomeOrder.create!(date: 20200324, state_id: 21, order_action: "imposed")  
 StayAtHomeOrder.create!(date: 20200324, state_id: 22, order_action: "imposed")  ## Michigan
 StayAtHomeOrder.create!(date: 20200327, state_id: 23, order_action: "imposed")  ## Minnesota
 StayAtHomeOrder.create!(date: 20200403, state_id: 24, order_action: "imposed")  ## Mississippi
-# StayAtHomeOrder.create!(date: , state_id: 25, order_action: "imposed")  ## Missouri
+StayAtHomeOrder.create!(date: 20020406, state_id: 25, order_action: "imposed")  ## Missouri
 StayAtHomeOrder.create!(date: 20200328, state_id: 26, order_action: "imposed")  ## Montana
 # StayAtHomeOrder.create!(date: , state_id: 27, order_action: "imposed")  ## Nebraska
 StayAtHomeOrder.create!(date: 20200401, state_id: 28, order_action: "imposed")  ## Nevada
@@ -122,7 +122,7 @@ StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  
 # StayAtHomeOrder.create!(date: , state_id: 40, order_action: "imposed")  ## South Carolina
 # StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
 StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
-# StayAtHomeOrder.create!(date: , state_id: 43, order_action: "imposed")  ## Texas
+StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  ## Texas
 # StayAtHomeOrder.create!(date: , state_id: 44, order_action: "imposed")  ## Utah
 StayAtHomeOrder.create!(date: 20200325, state_id: 45, order_action: "imposed")  ## Vermont
 StayAtHomeOrder.create!(date: 20200330, state_id: 46, order_action: "imposed")  ## Virginia
