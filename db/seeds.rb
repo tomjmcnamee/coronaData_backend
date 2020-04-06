@@ -137,3 +137,4 @@ StayAtHomeOrder.create!(date: 20200315, state_id: 53, order_action: "imposed")  
 # StayAtHomeOrder.create!(date: , state_id: 55, order_action: "imposed")  ## Guam
 # StayAtHomeOrder.create!(date: , state_id: 56, order_action: "imposed")  ## Northern Mariana islands
 puts "Stay At Home Order -- End"
+# 
