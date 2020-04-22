@@ -3,6 +3,11 @@ class CreateProcessedStats < ActiveRecord::Migration[6.0]
     create_table :processed_stats do |t|
       t.references :state, null: false, foreign_key: true
       t.string :count_type
+      t.integer '20200228'
+      t.integer '20200229'
+      t.integer '20200301'
+      t.integer '20200302'
+      t.integer '20200303'
       t.integer '20200304'
       t.integer '20200305'
       t.integer '20200306'

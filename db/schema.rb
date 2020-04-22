@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_040753) do
+ActiveRecord::Schema.define(version: 2020_04_02_034005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 2020_04_03_040753) do
   create_table "processed_stats", force: :cascade do |t|
     t.bigint "state_id", null: false
     t.string "count_type"
+    t.integer "20200228"
+    t.integer "20200229"
+    t.integer "20200301"
+    t.integer "20200302"
+    t.integer "20200303"
     t.integer "20200304"
     t.integer "20200305"
     t.integer "20200306"

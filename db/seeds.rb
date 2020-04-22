@@ -119,7 +119,7 @@ StayAtHomeOrder.create!(date: 20200323, state_id: 35, order_action: "imposed")  
 StayAtHomeOrder.create!(date: 20200323, state_id: 37, order_action: "imposed")  ## Oregon
 StayAtHomeOrder.create!(date: 20200401, state_id: 38, order_action: "imposed")  ## Pennsylvania
 StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  ## Rhode Island
-# StayAtHomeOrder.create!(date: , state_id: 40, order_action: "imposed")  ## South Carolina
+StayAtHomeOrder.create!(date: 20200407, state_id: 40, order_action: "imposed")  ## South Carolina
 # StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
 StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
 StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  ## Texas
