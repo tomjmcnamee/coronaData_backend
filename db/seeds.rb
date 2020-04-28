@@ -82,6 +82,7 @@ puts "CREATE DB ROW Records -- END"
 puts "Stay At Home Order -- START"
 StayAtHomeOrder.create!(date: 20200324, state_id: 1,  order_action: "imposed")  ## Alabama
 StayAtHomeOrder.create!(date: 20200328, state_id: 2,  order_action: "imposed")  ## Alaska
+StayAtHomeOrder.create!(date: 20200424, state_id: 2,  order_action: "lifted")  ## Alaska
 StayAtHomeOrder.create!(date: 20200331, state_id: 3,  order_action: "imposed")  ## Arizona
 # StayAtHomeOrder.create!(date: , state_id: 4,  order_action: "imposed")  ## Arkansas
 StayAtHomeOrder.create!(date: 20200331, state_id: 5,  order_action: "imposed")  ## California
@@ -90,6 +91,7 @@ StayAtHomeOrder.create!(date: 20200323, state_id: 7, order_action: "imposed")  #
 StayAtHomeOrder.create!(date: 20200324, state_id: 8, order_action: "imposed")  ## Delaware
 StayAtHomeOrder.create!(date: 20200403, state_id: 9, order_action: "imposed")  ## Florida
 StayAtHomeOrder.create!(date: 20200403, state_id: 10, order_action: "imposed")  ## Georgia
+StayAtHomeOrder.create!(date: 20200424, state_id: 10, order_action: "lifted")  ## Georgia
 StayAtHomeOrder.create!(date: 20200325, state_id: 11, order_action: "imposed")  ## Hawaii
 StayAtHomeOrder.create!(date: 20200325, state_id: 12, order_action: "imposed")  ## Idaho
 StayAtHomeOrder.create!(date: 20200321, state_id: 13, order_action: "imposed")  ## Illinois
@@ -120,6 +122,7 @@ StayAtHomeOrder.create!(date: 20200323, state_id: 37, order_action: "imposed")  
 StayAtHomeOrder.create!(date: 20200401, state_id: 38, order_action: "imposed")  ## Pennsylvania
 StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  ## Rhode Island
 StayAtHomeOrder.create!(date: 20200407, state_id: 40, order_action: "imposed")  ## South Carolina
+StayAtHomeOrder.create!(date: 20200420, state_id: 40, order_action: "lifted")  ## South Carolina
 # StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
 StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
 StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  ## Texas
