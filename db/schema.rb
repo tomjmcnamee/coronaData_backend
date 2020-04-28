@@ -81,6 +81,37 @@ ActiveRecord::Schema.define(version: 2020_04_02_034005) do
     t.integer "20200428"
     t.integer "20200429"
     t.integer "20200430"
+    t.integer "20200501"
+    t.integer "20200502"
+    t.integer "20200503"
+    t.integer "20200504"
+    t.integer "20200505"
+    t.integer "20200506"
+    t.integer "20200507"
+    t.integer "20200508"
+    t.integer "20200509"
+    t.integer "20200510"
+    t.integer "20200511"
+    t.integer "20200512"
+    t.integer "20200513"
+    t.integer "20200514"
+    t.integer "20200515"
+    t.integer "20200516"
+    t.integer "20200517"
+    t.integer "20200518"
+    t.integer "20200519"
+    t.integer "20200520"
+    t.integer "20200521"
+    t.integer "20200522"
+    t.integer "20200523"
+    t.integer "20200524"
+    t.integer "20200525"
+    t.integer "20200526"
+    t.integer "20200527"
+    t.integer "20200528"
+    t.integer "20200529"
+    t.integer "20200530"
+    t.integer "20200531"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["state_id"], name: "index_processed_stats_on_state_id"
@@ -120,16 +151,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_034005) do
     t.index ["state_id"], name: "index_stay_at_home_orders_on_state_id"
   end
 
-  create_table "total_stats", force: :cascade do |t|
-    t.integer "date"
-    t.bigint "state_id", null: false
-    t.integer "count"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["state_id"], name: "index_total_stats_on_state_id"
-  end
-
   add_foreign_key "processed_stats", "states"
   add_foreign_key "stay_at_home_orders", "states"
-  add_foreign_key "total_stats", "states"
 end
