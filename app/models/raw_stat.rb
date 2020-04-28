@@ -8,26 +8,28 @@ class RawStat < ApplicationRecord
     ##Inserts ALL data into the Stats table.
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
       jsonData.each { |x| 
-        # RawStat.create(x) 
-        # pending = 0
-        # if !!x.pending
-        #   pending = x["pending"]
-        # end
-        RawStat.create(
-          date: x["date"],
-          state: x["state"],
-          positive: x["positive"],
-          negative: x["negative"],
-          hospitalized: x["hospitalizedCumulative"],
-          death: x["death"],
-          total: x["total"],
-          dateChecked: x["dateChecked"],
-          deathIncrease: x["deathIncrease"],
-          hospitalizedIncrease: x["hospitalizedIncrease"],
-          negativeIncrease: x["negativeIncrease"],
-          positiveIncrease: x["positiveIncrease"],
-          totalTestResultsIncrease: x["totalTestResultsIncrease"]
-        ) 
+        if x["date"] > 20200227
+          # RawStat.create(x) 
+          # pending = 0
+          # if !!x.pending
+          #   pending = x["pending"]
+          # end
+          RawStat.create(
+            date: x["date"],
+            state: x["state"],
+            positive: x["positive"],
+            negative: x["negative"],
+            hospitalized: x["hospitalizedCumulative"],
+            death: x["death"],
+            total: x["total"],
+            dateChecked: x["dateChecked"],
+            deathIncrease: x["deathIncrease"],
+            hospitalizedIncrease: x["hospitalizedIncrease"],
+            negativeIncrease: x["negativeIncrease"],
+            positiveIncrease: x["positiveIncrease"],
+            totalTestResultsIncrease: x["totalTestResultsIncrease"]
+          ) 
+        end
       }
     end
   end 

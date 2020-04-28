@@ -63,11 +63,11 @@ State.create!(id: 48, state_name: "Washington DC", state_abbreviation: "DC")
 State.create!(id: 49, state_name: "West Virginia", state_abbreviation: "WV")
 State.create!(id: 50, state_name: "Wisconsin", state_abbreviation: "WI")
 State.create!(id: 51, state_name: "Wyoming", state_abbreviation: "WY")
-State.create!(id: 52, state_name: "American Samoa", state_abbreviation: "AS")
+# State.create!(id: 52, state_name: "American Samoa", state_abbreviation: "AS")
 State.create!(id: 53, state_name: "Puerto Rico", state_abbreviation: "PR")
-State.create!(id: 54, state_name: "US Virgin Islands", state_abbreviation: "VI")
-State.create!(id: 55, state_name: "Guam", state_abbreviation: "GU")
-State.create!(id: 56, state_name: "Northern Mariana Islands", state_abbreviation: "MP")
+# State.create!(id: 54, state_name: "US Virgin Islands", state_abbreviation: "VI")
+# State.create!(id: 55, state_name: "Guam", state_abbreviation: "GU")
+# State.create!(id: 56, state_name: "Northern Mariana Islands", state_abbreviation: "MP")
 puts "Create States -- END"
 
 puts "CREATE DB ROW Records -- START"
