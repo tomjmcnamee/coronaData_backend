@@ -80,6 +80,7 @@ end
 puts "CREATE DB ROW Records -- END"
 
 puts "Stay At Home Order -- START"
+#https://www.businessinsider.com/us-map-stay-at-home-orders-lockdowns-2020-3
 StayAtHomeOrder.create!(date: 20200324, state_id: 1,  order_action: "imposed")  ## Alabama
 StayAtHomeOrder.create!(date: 20200328, state_id: 2,  order_action: "imposed")  ## Alaska
 StayAtHomeOrder.create!(date: 20200424, state_id: 2,  order_action: "lifted")  ## Alaska
@@ -130,12 +131,12 @@ StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  
 StayAtHomeOrder.create!(date: 20200325, state_id: 45, order_action: "imposed")  ## Vermont
 StayAtHomeOrder.create!(date: 20200330, state_id: 46, order_action: "imposed")  ## Virginia
 StayAtHomeOrder.create!(date: 20200323, state_id: 47, order_action: "imposed")  ## Washington
-StayAtHomeOrder.create!(date: 20200401, state_id: 48, order_action: "imposed")  ## Washington DC
+StayAtHomeOrder.create!(date: 20200327, state_id: 48, order_action: "imposed")  ## Washington DC
 StayAtHomeOrder.create!(date: 20200324, state_id: 49, order_action: "imposed")  ## West Virginia
 StayAtHomeOrder.create!(date: 20200325, state_id: 50, order_action: "imposed")  ## Wisconsin
 # StayAtHomeOrder.create!(date: , state_id: 51, order_action: "imposed")  ## Wyoming
 # StayAtHomeOrder.create!(date: , state_id: 52, order_action: "imposed")  ## American Samoa
-StayAtHomeOrder.create!(date: 20200315, state_id: 53, order_action: "imposed")  ## Puerto Rico
+StayAtHomeOrder.create!(date: 20200330, state_id: 53, order_action: "imposed")  ## Puerto Rico
 # StayAtHomeOrder.create!(date: , state_id: 54, order_action: "imposed")  ## US Virgin Islands
 # StayAtHomeOrder.create!(date: , state_id: 55, order_action: "imposed")  ## Guam
 # StayAtHomeOrder.create!(date: , state_id: 56, order_action: "imposed")  ## Northern Mariana islands
