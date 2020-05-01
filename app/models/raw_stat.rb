@@ -3,17 +3,26 @@ class RawStat < ApplicationRecord
   require 'nokogiri'
   require 'open-uri'
   def self.pullALLData
-    jsonData = JSON.load(open("https://covidtracking.com/api/states/daily.json"))
-    puts "raw data #{jsonData}"
+    jsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
     ##Inserts ALL data into the Stats table.
+      self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
+  end 
+
+  def self.pullAndProcessDaysData(datesArr)
+    allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
+    subsetDaysData = allJsonData.first(400)
+    for d in datesArr do
+      ##Inserts ALL data into the Stats table.
+      jsonData = subsetDaysData.select { |obj| obj["date"] == d }     
+        self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
+    end ## Ends for loop for dates
+  end 
+
+
+  def self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
       jsonData.each { |x| 
         if x["date"] > 20200227
-          # RawStat.create(x) 
-          # pending = 0
-          # if !!x.pending
-          #   pending = x["pending"]
-          # end
           RawStat.create(
             date: x["date"],
             state: x["state"],
@@ -21,7 +30,7 @@ class RawStat < ApplicationRecord
             negative: x["negative"],
             hospitalized: x["hospitalizedCumulative"],
             death: x["death"],
-            total: x["total"],
+            total: x["totalTestResults"],
             dateChecked: x["dateChecked"],
             deathIncrease: x["deathIncrease"],
             hospitalizedIncrease: x["hospitalizedIncrease"],
@@ -30,34 +39,34 @@ class RawStat < ApplicationRecord
             totalTestResultsIncrease: x["totalTestResultsIncrease"]
           ) 
         end
-      }
-    end
-  end 
+      }  ## Ends Each loop
+    end ## ends IF making sure json returned is good
+  end
 
-  def self.pullAndProcessDaysData(arrOfDatesToProcess)
-    for d in arrOfDatesToProcess do
-      jsonData = JSON.load(open("https://covidtracking.com/api/states/daily?date=#{d}"))
-      ##Inserts ALL data into the Stats table.
-      if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
-        jsonData.each { |x| 
-          # RawStat.create(x) 
-          RawStat.create(
-            date: x["date"],
-            state: x["state"],
-            positive: x["positive"],
-            negative: x["negative"],
-            hospitalized: x["hospitalizedCumulative"],
-            death: x["death"],
-            total: x["total"],
-            dateChecked: x["dateChecked"],
-            deathIncrease: x["deathIncrease"],
-            hospitalizedIncrease: x["hospitalizedIncrease"],
-            negativeIncrease: x["negativeIncrease"],
-            positiveIncrease: x["positiveIncrease"],
-            totalTestResultsIncrease: x["totalTestResultsIncrease"]
-          )
-        } ## ends each loop
-      end ## ends IF making sure json returned is good
-    end ## Ends loop of dates to process
-  end 
-end
+
+  # def self.timeTest
+  #                   allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
+  #                   arrOfDatesToProcess = [20200430, 20200429, 20200428, 20200427, 20200426]
+  #   startTime = Time.new
+  #                   subsetDaysData = allJsonData.first(400)
+  #                   for d in arrOfDatesToProcess do
+  #                     jsonData = subsetDaysData.select { |obj| obj["date"] === d }
+  #                   end
+  #   endTime = Time.new
+  # # endTime = endTime + 1
+  #   puts "Chopping off the first 60 took thig long:  #{endTime - startTime}"
+
+
+  #   startTime = Time.new
+  #                 for d in arrOfDatesToProcess do
+  #                   jsonData = allJsonData.select { |obj| obj["date"] === [20200430, 20200429, 20200428, 20200427, 20200426]}
+  #                 end
+  #   endTime = Time.new
+  #   puts "just selecting date from ALL took thig long:  #{endTime - startTime}"
+  # end
+
+end   # Ends Class
+
+
+
+

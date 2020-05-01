@@ -19,34 +19,24 @@ class Api::V1::DbUpdateController < ApplicationController
     def Daily5pUpdate
         allDatesArr = RawStat.distinct.pluck("date").sort
         currentDate = Time.now.strftime("%Y%m%d").to_i
-        # updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
-
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
-            ## Creates DB Rows - 1 per state+new/TotalDataType combo
-            # TotalStat.daily5pProcessingCron
-
             if !allDatesArr.include?(currentDate)
                 RawStat.pullAndProcessDaysData([currentDate])
                 TotalStat.addTotalStatToAppropriateRecord([currentDate])  
                 TotalStat.addNEWStatToAppropriateRecord([currentDate])
             end
-
-            render json: {  status: "Success: Days Data Added"  }
-            
+            render json: {  status: "Ran Successfully - If API data available, it was added"  }
             # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
             # updateLogger.error { "Bad PATCH PW attempt for daily5pUpdate  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
-
         end  ## Ends IF STatement about fetch password  
     end  # Ends Daily5pUpdate method
     
     def BulkLoadDatesData
         # updateLogger = updateLogger ||=Logger.new("#{Rails.root}/log/UpdateFetch.log")
-
         if request.headers["BulkLoad"] === ENV["BULKLOAD_PASSWORD"]
             datesArr = request.headers["DatesArr"].split(",").map { |date| date.to_i }
             # datesArr = request.params[:dates].split(",").map { |date| date.to_i }
-
             # TotalStat.bulkDataPullAndUpdate([datesArr])
             RawStat.pullAndProcessDaysData(datesArr)
             TotalStat.addTotalStatToAppropriateRecord(datesArr)  
