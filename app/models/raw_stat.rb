@@ -10,10 +10,10 @@ class RawStat < ApplicationRecord
 
   def self.pullAndProcessDaysData(datesArr)
     allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
-    subsetDaysData = allJsonData.first(400)
+    subsetJsonData = allJsonData.first(400)
     for d in datesArr do
       ##Inserts ALL data into the Stats table.
-      jsonData = subsetDaysData.select { |obj| obj["date"] == d }     
+      jsonData = subsetJsonData.select { |obj| obj["date"] == d }     
         self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
     end ## Ends for loop for dates
   end 
@@ -48,21 +48,21 @@ class RawStat < ApplicationRecord
   #                   allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
   #                   arrOfDatesToProcess = [20200430, 20200429, 20200428, 20200427, 20200426]
   #   startTime = Time.new
-  #                   subsetDaysData = allJsonData.first(400)
+  #                   subsetJsonData = allJsonData.first(400)
   #                   for d in arrOfDatesToProcess do
-  #                     jsonData = subsetDaysData.select { |obj| obj["date"] === d }
+  #                     jsonData = subsetJsonData.select { |obj| obj["date"] === d }
   #                   end
   #   endTime = Time.new
   # # endTime = endTime + 1
-  #   puts "Chopping off the first 60 took thig long:  #{endTime - startTime}"
+  #   puts "Chopping off the first 400 took this long:  #{endTime - startTime}"
 
 
   #   startTime = Time.new
   #                 for d in arrOfDatesToProcess do
-  #                   jsonData = allJsonData.select { |obj| obj["date"] === [20200430, 20200429, 20200428, 20200427, 20200426]}
+  #                   jsonData = allJsonData.select { |obj| obj["date"] === d}
   #                 end
   #   endTime = Time.new
-  #   puts "just selecting date from ALL took thig long:  #{endTime - startTime}"
+  #   puts "just selecting date from ALL took this long:  #{endTime - startTime}"
   # end
 
 end   # Ends Class
