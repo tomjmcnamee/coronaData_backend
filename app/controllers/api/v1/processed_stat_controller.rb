@@ -40,6 +40,9 @@ class Api::V1::ProcessedStatController < ApplicationController
             stayAtHomeOrders = StayAtHomeOrder.all
 
             allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }
+            # The Below line doesnt includee NY or NJ in the returned dataset
+            # allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }.select { |obj| obj.state_id != 32 && obj.state_id != 30  }
+
             totalPositive , totalNegative, totalDeath, totalTotal, totalHospitalized = [], [], [], [], []
             newPositive , newNegative, newDeath, newTotal, newHospitalized = [], [],[ ], [], []
             allTOTALStats.each do |obj|

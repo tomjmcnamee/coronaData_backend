@@ -19,11 +19,12 @@ class Api::V1::DbUpdateController < ApplicationController
     def Daily5pUpdate
         allDatesArr = RawStat.distinct.pluck("date").sort
         currentDate = Time.now.strftime("%Y%m%d").to_i
+        yesterday = (Time.now - 1.day).strftime("%Y%m%d").to_i
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
             if !allDatesArr.include?(currentDate)
-                RawStat.pullAndProcessDaysData([currentDate])
-                TotalStat.addTotalStatToAppropriateRecord([currentDate])  
-                TotalStat.addNEWStatToAppropriateRecord([currentDate])
+                RawStat.pullAndProcessDaysData([currentDate, yesterday])
+                TotalStat.addTotalStatToAppropriateRecord([currentDate, yesterday])  
+                TotalStat.addNEWStatToAppropriateRecord([currentDate, yesterday])
             end
             render json: {  status: "Ran Successfully - If API data available, it was added"  }
             # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}

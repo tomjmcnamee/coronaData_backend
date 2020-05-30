@@ -12,6 +12,7 @@ class RawStat < ApplicationRecord
   def self.pullAndProcessDaysData(datesArr)
     for d in datesArr do
       jsonData = JSON.load(open("https://covidtracking.com/api/v1/states/#{d}.json"))
+      RawStat.where(date: d).destroy_all
       self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
     end ## Ends for loop for dates
   end 
