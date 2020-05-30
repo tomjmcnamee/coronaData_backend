@@ -36,10 +36,16 @@ class Api::V1::ProcessedStatController < ApplicationController
     
     def indexTotal ##COMBINED --- SINGLE DB CALL
         if request.headers["FetchPW"] === ENV["FETCH_PASSWORD"]
-            allDatesArr = RawStat.distinct.pluck("date").sort.reverse
+            if request.headers["numOfDays"] === "all"
+                allDatesArr = RawStat.distinct.pluck("date").sort.reverse
+                allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }
+            else
+                allDatesArr = RawStat.distinct.pluck("date").sort.reverse.first(request.headers["numOfDays"].to_i + 1)
+                filteredDateColumns = allDatesArr.map { |x| x.to_s.to_sym}
+                allTOTALStats = ProcessedStat.all.select(:state_id, :count_type, filteredDateColumns).sort { |x,y| x.state_id <=> y.state_id }    
+            end
             stayAtHomeOrders = StayAtHomeOrder.all
 
-            allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }
             # The Below line doesnt includee NY or NJ in the returned dataset
             # allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }.select { |obj| obj.state_id != 32 && obj.state_id != 30  }
 
