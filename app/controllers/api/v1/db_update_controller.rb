@@ -25,6 +25,7 @@ class Api::V1::DbUpdateController < ApplicationController
                 RawStat.pullAndProcessDaysData([currentDate, yesterday])
                 TotalStat.addTotalStatToAppropriateRecord([currentDate, yesterday])  
                 TotalStat.addNEWStatToAppropriateRecord([currentDate, yesterday])
+                DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
             end
             render json: {  status: "Ran Successfully - If API data available, it was added"  }
             # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
@@ -42,6 +43,7 @@ class Api::V1::DbUpdateController < ApplicationController
             RawStat.pullAndProcessDaysData(datesArr)
             TotalStat.addTotalStatToAppropriateRecord(datesArr)  
             TotalStat.addNEWStatToAppropriateRecord(datesArr)
+            DataQualityGrade.addDataQualityStatToAppropriateRecord(datesArr)
             
             # updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: Data For the passed Dates Array has been pulled and Added"  }
@@ -57,6 +59,7 @@ class Api::V1::DbUpdateController < ApplicationController
             RawStat.delete_all
             RawStat.pullALLData
             TotalStat.processALLDataWithoutCreatingNewRows
+            DataQualityGrade.addDataQualityStatToAppropriateRecord([RawStat.maximum(:date)])
             
             # updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: All Data Refreshed"  }

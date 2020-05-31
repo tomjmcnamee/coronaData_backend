@@ -3,6 +3,7 @@ class CreateRawStats < ActiveRecord::Migration[6.0]
     create_table :raw_stats do |t|
       t.integer :date
       t.string :state
+      t.string :grade
       t.integer :positive
       t.integer :negative
       t.integer :hospitalized

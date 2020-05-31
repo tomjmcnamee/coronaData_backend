@@ -32,9 +32,11 @@ class RawStat < ApplicationRecord
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
       jsonData.each { |x| 
         if x["date"] > 20200227
+          ## This adds the record to the RawStat table
           RawStat.create(
             date: x["date"],
             state: x["state"],
+            grade: x["dataQualityGrade"],
             positive: x["positive"],
             negative: x["negative"],
             hospitalized: x["hospitalizedCumulative"],

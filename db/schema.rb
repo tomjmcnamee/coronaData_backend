@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_034005) do
+ActiveRecord::Schema.define(version: 2020_05_31_162514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_quality_grades", force: :cascade do |t|
+    t.string "state_abbreviation"
+    t.bigint "state_id", null: false
+    t.string "grade"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_data_quality_grades_on_state_id"
+  end
 
   create_table "processed_stats", force: :cascade do |t|
     t.bigint "state_id", null: false
@@ -133,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_034005) do
     t.datetime "dateChecked"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "grade"
   end
 
   create_table "states", force: :cascade do |t|
@@ -151,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_034005) do
     t.index ["state_id"], name: "index_stay_at_home_orders_on_state_id"
   end
 
+  add_foreign_key "data_quality_grades", "states"
   add_foreign_key "processed_stats", "states"
   add_foreign_key "stay_at_home_orders", "states"
 end
