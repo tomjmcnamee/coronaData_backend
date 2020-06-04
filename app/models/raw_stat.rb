@@ -9,27 +9,28 @@ class RawStat < ApplicationRecord
       self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
   end 
 
-  def self.pullAndProcessDaysData(datesArr)
-    for d in datesArr do
-      jsonData = JSON.load(open("https://covidtracking.com/api/v1/states/#{d}.json"))
-      RawStat.where(date: d).destroy_all
-      self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
-    end ## Ends for loop for dates
-  end 
-
   # def self.pullAndProcessDaysData(datesArr)
-  #   allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
-  #   subsetJsonData = allJsonData.first(400)
   #   for d in datesArr do
-  #     ##Inserts ALL data into the Stats table.
-  #     jsonData = subsetJsonData.select { |obj| obj["date"] == d }     
-  #       self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
+  #     jsonData = JSON.load(open("https://covidtracking.com/api/v1/states/#{d}.json"))
+  #     RawStat.where(date: d).destroy_all
+  #     self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
   #   end ## Ends for loop for dates
   # end 
 
+  def self.pullAndProcessDaysData(datesArr)
+    allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
+    subsetJsonData = allJsonData.first(400)
+    for d in datesArr do
+      ##Inserts ALL data into the Stats table.
+      jsonData = subsetJsonData.select { |obj| obj["date"] == d }     
+        self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData, d)
+    end ## Ends for loop for dates
+  end 
 
-  def self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData)
+
+  def self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData, date)
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
+      RawStat.where(date: date).destroy_all
       jsonData.each { |x| 
         if x["date"] > 20200227
           ## This adds the record to the RawStat table
