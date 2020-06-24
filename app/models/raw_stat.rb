@@ -19,7 +19,7 @@ class RawStat < ApplicationRecord
 
   def self.pullAndProcessDaysData(datesArr)
     allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
-    subsetJsonData = allJsonData.first(400)
+    subsetJsonData = allJsonData.first(2400)
     for d in datesArr do
       ##Inserts ALL data into the Stats table.
       jsonData = subsetJsonData.select { |obj| obj["date"] == d }     
@@ -28,9 +28,11 @@ class RawStat < ApplicationRecord
   end 
 
 
-  def self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData, date)
+  def self.helperVerifyAndInsertDataIntoRawStatsTable(jsonData, date = "all")
     if (!!jsonData && jsonData.kind_of?(Array) && jsonData.length > 0)
-      RawStat.where(date: date).destroy_all
+      if date != "all"
+        RawStat.where(date: date).destroy_all
+      end
       jsonData.each { |x| 
         if x["date"] > 20200227
           ## This adds the record to the RawStat table
