@@ -17,6 +17,7 @@ class Api::V1::DbUpdateController < ApplicationController
     # end  # Ends createDbRecordsDOONLYONCE method
 
     def Daily5pUpdate
+        timeStart = Time.now
         allDatesArr = RawStat.distinct.pluck("date").sort
         currentDate = Time.now.strftime("%Y%m%d").to_i
         
@@ -30,12 +31,16 @@ class Api::V1::DbUpdateController < ApplicationController
                 TotalStat.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  &&
                 TotalStat.addTotalStatToAppropriateRecord(arrOfDatesToProcess)   &&
                 DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
+
+                totalSeconds = Time.now - timeStart
+                puts "----- Total Time for Daily Update on #{currentDate} = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"        
             end
             render json: {  status: "Ran Successfully - If API data available, it was added"  }
             # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
             # updateLogger.error { "Bad PATCH PW attempt for daily5pUpdate  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
         end  ## Ends IF STatement about fetch password  
+        
     end  # Ends Daily5pUpdate method
     
     def BulkLoadDatesData
@@ -71,7 +76,7 @@ class Api::V1::DbUpdateController < ApplicationController
             # updateLogger.error { "Bad PATCH PW attempt for BulkLoadDatesData  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}
         end  ## Ends IF STatement about fetch password  
         totalSeconds = Time.now - timeStart
-        puts "Total Time = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"
+        puts "----- Total Time for RefreshingAllData on #{currentDate} = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"        
     end  # Ends BulkLoadDatesData method
 
     
