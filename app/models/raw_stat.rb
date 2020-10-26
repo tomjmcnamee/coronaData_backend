@@ -39,7 +39,6 @@ class RawStat < ApplicationRecord
           RawStat.create(
             date: x["date"],
             state: x["state"],
-            grade: x["dataQualityGrade"],
             positive: x["positive"],
             negative: x["negative"],
             hospitalized: x["hospitalizedCumulative"],

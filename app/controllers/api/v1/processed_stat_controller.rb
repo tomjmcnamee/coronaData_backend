@@ -13,8 +13,6 @@ class Api::V1::ProcessedStatController < ApplicationController
                 filteredDateColumns = allDatesArr.map { |x| x.to_s.to_sym}
                 allTOTALStats = ProcessedStat.all.select(:state_id, :count_type, filteredDateColumns).sort { |x,y| x.state_id <=> y.state_id }    
             end
-            stayAtHomeOrders = StayAtHomeOrder.all
-            dataQualityGrades = DataQualityGrade.all.select(:state_id, :grade, :state_abbreviation, :id)
             # The Below line doesnt includee NY or NJ in the returned dataset
             # allTOTALStats = ProcessedStat.all.sort { |x,y| x.state_id <=> y.state_id }.select { |obj| obj.state_id != 32 && obj.state_id != 30  }
 
@@ -34,7 +32,6 @@ class Api::V1::ProcessedStatController < ApplicationController
             end
             render json: {
                 allDatesArr: allDatesArr,
-                stayAtHomeOrders: stayAtHomeOrders,
                 totalPositive:totalPositive,
                 totalNegative:totalNegative,
                 totalDeath: totalDeath,
@@ -45,7 +42,6 @@ class Api::V1::ProcessedStatController < ApplicationController
                 newDeath: newDeath,
                 newTotal: newTotal,
                 newHospitalized: newHospitalized,
-                dataQualityGrades: dataQualityGrades
             } 
         end
     end

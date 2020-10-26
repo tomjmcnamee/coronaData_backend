@@ -30,7 +30,7 @@ class Api::V1::DbUpdateController < ApplicationController
                 RawStat.pullAndProcessDaysData(arrOfDatesToProcess) &&
                 TotalStat.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  &&
                 TotalStat.addTotalStatToAppropriateRecord(arrOfDatesToProcess)   &&
-                DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
+                # DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
 
                 totalSeconds = Time.now - timeStart
                 puts "----- Total Time for Daily Update on #{currentDate} = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"        
@@ -52,7 +52,7 @@ class Api::V1::DbUpdateController < ApplicationController
             RawStat.pullAndProcessDaysData(datesArr)
             TotalStat.addTotalStatToAppropriateRecord(datesArr)  
             TotalStat.addNEWStatToAppropriateRecord(datesArr)
-            DataQualityGrade.addDataQualityStatToAppropriateRecord(datesArr)
+            # DataQualityGrade.addDataQualityStatToAppropriateRecord(datesArr)
             
             # updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: Data For the passed Dates Array has been pulled and Added"  }
@@ -68,7 +68,7 @@ class Api::V1::DbUpdateController < ApplicationController
             RawStat.delete_all
             RawStat.pullALLData
             TotalStat.processALLDataWithoutCreatingNewRows
-            DataQualityGrade.addDataQualityStatToAppropriateRecord([RawStat.maximum(:date)])
+            # DataQualityGrade.addDataQualityStatToAppropriateRecord([RawStat.maximum(:date)])
             
             # updateLogger.info {"Successful PATCH for BulkLoadDatesData from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
             render json: {  status: "Success: All Data Refreshed"  }
