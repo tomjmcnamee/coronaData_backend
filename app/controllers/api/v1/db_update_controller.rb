@@ -17,26 +17,32 @@ class Api::V1::DbUpdateController < ApplicationController
     # end  # Ends createDbRecordsDOONLYONCE method
 
     def Daily5pUpdate
-        timeStart = Time.now
-        datesInRaw = RawStat.distinct.pluck("date")
-        allDatesArr = ( datesInRaw | ENV["ALL_DATES_ARR"].split(",").map(&:to_i)).sort
-        currentDate = Time.now.strftime("%Y%m%d").to_i
-        
-        #### These 2 lines ensure that 7 days worth of data is updated each day
-        indexFrom7DaysAgo = ProcessedStat.column_names.find_index(currentDate.to_s) - 6
-        arrOfDatesToProcess = ProcessedStat.column_names[indexFrom7DaysAgo, 7].map(&:to_i)
-        # yesterday = (Time.now - 1.day).strftime("%Y%m%d").to_i
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
-            if !datesInRaw.include?(currentDate)
-                RawStat.pullAndProcessDaysData(arrOfDatesToProcess) &&
-                TotalStat.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  &&
-                TotalStat.addTotalStatToAppropriateRecord(arrOfDatesToProcess)   &&
-                # DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
-
-                totalSeconds = Time.now - timeStart
-                puts "----- Total Time for Daily Update on #{currentDate} = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"        
+            currentDate = Time.now.strftime("%Y%m%d").to_i
+            timeStart = Time.now
+            if RawStat.checkToSeeIfTodaysDataIsAvailable(currentDate)
+                datesInRaw = RawStat.distinct.pluck("date")
+                allDatesArr = ( datesInRaw | ENV["ALL_DATES_ARR"].split(",").map(&:to_i)).sort
+                
+                #### These 2 lines ensure that 7 days worth of data is updated each day
+                indexFrom7DaysAgo = ProcessedStat.column_names.find_index(currentDate.to_s) - 6
+                arrOfDatesToProcess = ProcessedStat.column_names[indexFrom7DaysAgo, 7].map(&:to_i)
+                # yesterday = (Time.now - 1.day).strftime("%Y%m%d").to_i
+            
+                if !datesInRaw.include?(currentDate)
+                    RawStat.pullAndProcessDaysData(arrOfDatesToProcess) &&
+                    TotalStat.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  &&
+                    TotalStat.addTotalStatToAppropriateRecord(arrOfDatesToProcess)   &&
+                    # DataQualityGrade.addDataQualityStatToAppropriateRecord([currentDate])
+    
+                    totalSeconds = Time.now - timeStart
+                    puts "----- Total Time for Daily Update on #{currentDate} = #{Time.at(totalSeconds).utc.strftime("%H:%M:%S")}"        
+                end
+                render json: {  status: "Ran Successfully - If API data available, it was added"  }
+            else 
+                puts "not updated (#{currentDate} NOT in rawTable or available in source (as of #{timeStart}"
+                render json: {  status: "not updated (#{currentDate} NOT in rawTable), not available in source (as of #{timeStart})"  }
             end
-            render json: {  status: "Ran Successfully - If API data available, it was added"  }
             # updateLogger.info {"Successful PATCH for daily5pUpdate from (HTTP_Origin) #{request.headers['HTTP_ORIGIN'].inspect}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}   "}
         else
             # updateLogger.error { "Bad PATCH PW attempt for daily5pUpdate  from (HTTP_Origin) #{request.headers['HTTP_ORIGIN}']}   (HTTP_REFERER) #{request.headers['HTTP_REFERER']}  "}

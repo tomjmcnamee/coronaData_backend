@@ -17,6 +17,16 @@ class RawStat < ApplicationRecord
   #   end ## Ends for loop for dates
   # end 
 
+  def self.checkToSeeIfTodaysDataIsAvailable(today_yyyymmdd)
+    todaysUSDataHash = JSON.load(open("https://api.covidtracking.com/v1/us/current.json"))
+    mostRecentDateAvailable = todaysUSDataHash[0]["date"]
+    if today_yyyymmdd === mostRecentDateAvailable
+      return true
+    else
+      return false
+    end
+  end 
+
   def self.pullAndProcessDaysData(datesArr)
     allJsonData = JSON.load(open("https://covidtracking.com/api/v1/states/daily.json"))
     subsetJsonData = allJsonData.first(2400)
