@@ -18,7 +18,8 @@ class Api::V1::DbUpdateController < ApplicationController
 
     def Daily5pUpdate
         timeStart = Time.now
-        allDatesArr = (RawStat.distinct.pluck("date") | ENV["ALL_DATES_ARR"].split(",").map(&:to_i)).sort
+        datesInRaw = RawStat.distinct.pluck("date")
+        allDatesArr = ( datesInRaw | ENV["ALL_DATES_ARR"].split(",").map(&:to_i)).sort
         currentDate = Time.now.strftime("%Y%m%d").to_i
         
         #### These 2 lines ensure that 7 days worth of data is updated each day
@@ -26,7 +27,7 @@ class Api::V1::DbUpdateController < ApplicationController
         arrOfDatesToProcess = ProcessedStat.column_names[indexFrom7DaysAgo, 7].map(&:to_i)
         # yesterday = (Time.now - 1.day).strftime("%Y%m%d").to_i
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
-            if !allDatesArr.include?(currentDate)
+            if !datesInRaw.include?(currentDate)
                 RawStat.pullAndProcessDaysData(arrOfDatesToProcess) &&
                 TotalStat.addNEWStatToAppropriateRecord(arrOfDatesToProcess)  &&
                 TotalStat.addTotalStatToAppropriateRecord(arrOfDatesToProcess)   &&
