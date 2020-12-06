@@ -71,64 +71,64 @@ State.create!(id: 53, state_name: "Puerto Rico", state_abbreviation: "PR")
 puts "Create States -- END"
 
 
-puts "DataQualityGrades -- START"
-DataQualityGrade.create!(id: 1, state_id: 1, state_abbreviation: "AL")
-DataQualityGrade.create!(id: 2, state_id: 2, state_abbreviation: "AK")
-DataQualityGrade.create!(id: 3, state_id: 3, state_abbreviation: "AZ")
-DataQualityGrade.create!(id: 4, state_id: 4, state_abbreviation: "AR")
-DataQualityGrade.create!(id: 5, state_id: 5, state_abbreviation: "CA")
-DataQualityGrade.create!(id: 6, state_id: 6, state_abbreviation: "CO")
-DataQualityGrade.create!(id: 7, state_id: 7, state_abbreviation: "CT")
-DataQualityGrade.create!(id: 8, state_id: 8, state_abbreviation: "DE")
-DataQualityGrade.create!(id: 9, state_id: 9, state_abbreviation: "FL")
-DataQualityGrade.create!(id: 10, state_id: 10, state_abbreviation: "GA")
-DataQualityGrade.create!(id: 11, state_id: 11, state_abbreviation: "HI")
-DataQualityGrade.create!(id: 12, state_id: 12, state_abbreviation: "ID")
-DataQualityGrade.create!(id: 13, state_id: 13, state_abbreviation: "IL")
-DataQualityGrade.create!(id: 14, state_id: 14, state_abbreviation: "IN")
-DataQualityGrade.create!(id: 15, state_id: 15, state_abbreviation: "IA")
-DataQualityGrade.create!(id: 16, state_id: 16, state_abbreviation: "KS")
-DataQualityGrade.create!(id: 17, state_id: 17, state_abbreviation: "KY")
-DataQualityGrade.create!(id: 18, state_id: 18, state_abbreviation: "LA")
-DataQualityGrade.create!(id: 19, state_id: 19, state_abbreviation: "ME")
-DataQualityGrade.create!(id: 20, state_id: 20, state_abbreviation: "MD")
-DataQualityGrade.create!(id: 21, state_id: 21, state_abbreviation: "MA")
-DataQualityGrade.create!(id: 22, state_id: 22, state_abbreviation: "MI")
-DataQualityGrade.create!(id: 23, state_id: 23, state_abbreviation: "MN")
-DataQualityGrade.create!(id: 24, state_id: 24, state_abbreviation: "MS")
-DataQualityGrade.create!(id: 25, state_id: 25, state_abbreviation: "MO")
-DataQualityGrade.create!(id: 26, state_id: 26, state_abbreviation: "MT")
-DataQualityGrade.create!(id: 27, state_id: 27, state_abbreviation: "NE")
-DataQualityGrade.create!(id: 28, state_id: 28, state_abbreviation: "NV")
-DataQualityGrade.create!(id: 29, state_id: 29, state_abbreviation: "NH")
-DataQualityGrade.create!(id: 30, state_id: 30, state_abbreviation: "NJ")
-DataQualityGrade.create!(id: 31, state_id: 31, state_abbreviation: "NM")
-DataQualityGrade.create!(id: 32, state_id: 32, state_abbreviation: "NY")
-DataQualityGrade.create!(id: 33, state_id: 33, state_abbreviation: "NC")
-DataQualityGrade.create!(id: 34, state_id: 34, state_abbreviation: "ND")
-DataQualityGrade.create!(id: 35, state_id: 35, state_abbreviation: "OH")
-DataQualityGrade.create!(id: 36, state_id: 36, state_abbreviation: "OK")
-DataQualityGrade.create!(id: 37, state_id: 37, state_abbreviation: "OR")
-DataQualityGrade.create!(id: 38, state_id: 38, state_abbreviation: "PA")
-DataQualityGrade.create!(id: 39, state_id: 39, state_abbreviation: "RI")
-DataQualityGrade.create!(id: 40, state_id: 40, state_abbreviation: "SC")
-DataQualityGrade.create!(id: 41, state_id: 41, state_abbreviation: "SD")
-DataQualityGrade.create!(id: 42, state_id: 42, state_abbreviation: "TN")
-DataQualityGrade.create!(id: 43, state_id: 43, state_abbreviation: "TX")
-DataQualityGrade.create!(id: 44, state_id: 44, state_abbreviation: "UT")
-DataQualityGrade.create!(id: 45, state_id: 45, state_abbreviation: "VT")
-DataQualityGrade.create!(id: 46, state_id: 46, state_abbreviation: "VA")
-DataQualityGrade.create!(id: 47, state_id: 47, state_abbreviation: "WA")
-DataQualityGrade.create!(id: 48, state_id: 48, state_abbreviation: "DC")
-DataQualityGrade.create!(id: 49, state_id: 49, state_abbreviation: "WV")
-DataQualityGrade.create!(id: 50, state_id: 50, state_abbreviation: "WI")
-DataQualityGrade.create!(id: 51, state_id: 51, state_abbreviation: "WY")
-# DataQualityGrade.create!(id: 52, state_id: 52, state_abbreviation: "AS")
-DataQualityGrade.create!(id: 53, state_id: 53, state_abbreviation: "PR")
-# DataQualityGrade.create!(id: 54, state_id: 54, state_abbreviation: "VI")
-# DataQualityGrade.create!(id: 55, state_id: 55, state_abbreviation: "GU")
-# DataQualityGrade.create!(id: 56, state_id: 56, state_abbreviation: "MP")
-puts "DataQualityGrades -- END"
+# puts "DataQualityGrades -- START"
+# DataQualityGrade.create!(id: 1, state_id: 1, state_abbreviation: "AL")
+# DataQualityGrade.create!(id: 2, state_id: 2, state_abbreviation: "AK")
+# DataQualityGrade.create!(id: 3, state_id: 3, state_abbreviation: "AZ")
+# DataQualityGrade.create!(id: 4, state_id: 4, state_abbreviation: "AR")
+# DataQualityGrade.create!(id: 5, state_id: 5, state_abbreviation: "CA")
+# DataQualityGrade.create!(id: 6, state_id: 6, state_abbreviation: "CO")
+# DataQualityGrade.create!(id: 7, state_id: 7, state_abbreviation: "CT")
+# DataQualityGrade.create!(id: 8, state_id: 8, state_abbreviation: "DE")
+# DataQualityGrade.create!(id: 9, state_id: 9, state_abbreviation: "FL")
+# DataQualityGrade.create!(id: 10, state_id: 10, state_abbreviation: "GA")
+# DataQualityGrade.create!(id: 11, state_id: 11, state_abbreviation: "HI")
+# DataQualityGrade.create!(id: 12, state_id: 12, state_abbreviation: "ID")
+# DataQualityGrade.create!(id: 13, state_id: 13, state_abbreviation: "IL")
+# DataQualityGrade.create!(id: 14, state_id: 14, state_abbreviation: "IN")
+# DataQualityGrade.create!(id: 15, state_id: 15, state_abbreviation: "IA")
+# DataQualityGrade.create!(id: 16, state_id: 16, state_abbreviation: "KS")
+# DataQualityGrade.create!(id: 17, state_id: 17, state_abbreviation: "KY")
+# DataQualityGrade.create!(id: 18, state_id: 18, state_abbreviation: "LA")
+# DataQualityGrade.create!(id: 19, state_id: 19, state_abbreviation: "ME")
+# DataQualityGrade.create!(id: 20, state_id: 20, state_abbreviation: "MD")
+# DataQualityGrade.create!(id: 21, state_id: 21, state_abbreviation: "MA")
+# DataQualityGrade.create!(id: 22, state_id: 22, state_abbreviation: "MI")
+# DataQualityGrade.create!(id: 23, state_id: 23, state_abbreviation: "MN")
+# DataQualityGrade.create!(id: 24, state_id: 24, state_abbreviation: "MS")
+# DataQualityGrade.create!(id: 25, state_id: 25, state_abbreviation: "MO")
+# DataQualityGrade.create!(id: 26, state_id: 26, state_abbreviation: "MT")
+# DataQualityGrade.create!(id: 27, state_id: 27, state_abbreviation: "NE")
+# DataQualityGrade.create!(id: 28, state_id: 28, state_abbreviation: "NV")
+# DataQualityGrade.create!(id: 29, state_id: 29, state_abbreviation: "NH")
+# DataQualityGrade.create!(id: 30, state_id: 30, state_abbreviation: "NJ")
+# DataQualityGrade.create!(id: 31, state_id: 31, state_abbreviation: "NM")
+# DataQualityGrade.create!(id: 32, state_id: 32, state_abbreviation: "NY")
+# DataQualityGrade.create!(id: 33, state_id: 33, state_abbreviation: "NC")
+# DataQualityGrade.create!(id: 34, state_id: 34, state_abbreviation: "ND")
+# DataQualityGrade.create!(id: 35, state_id: 35, state_abbreviation: "OH")
+# DataQualityGrade.create!(id: 36, state_id: 36, state_abbreviation: "OK")
+# DataQualityGrade.create!(id: 37, state_id: 37, state_abbreviation: "OR")
+# DataQualityGrade.create!(id: 38, state_id: 38, state_abbreviation: "PA")
+# DataQualityGrade.create!(id: 39, state_id: 39, state_abbreviation: "RI")
+# DataQualityGrade.create!(id: 40, state_id: 40, state_abbreviation: "SC")
+# DataQualityGrade.create!(id: 41, state_id: 41, state_abbreviation: "SD")
+# DataQualityGrade.create!(id: 42, state_id: 42, state_abbreviation: "TN")
+# DataQualityGrade.create!(id: 43, state_id: 43, state_abbreviation: "TX")
+# DataQualityGrade.create!(id: 44, state_id: 44, state_abbreviation: "UT")
+# DataQualityGrade.create!(id: 45, state_id: 45, state_abbreviation: "VT")
+# DataQualityGrade.create!(id: 46, state_id: 46, state_abbreviation: "VA")
+# DataQualityGrade.create!(id: 47, state_id: 47, state_abbreviation: "WA")
+# DataQualityGrade.create!(id: 48, state_id: 48, state_abbreviation: "DC")
+# DataQualityGrade.create!(id: 49, state_id: 49, state_abbreviation: "WV")
+# DataQualityGrade.create!(id: 50, state_id: 50, state_abbreviation: "WI")
+# DataQualityGrade.create!(id: 51, state_id: 51, state_abbreviation: "WY")
+# # DataQualityGrade.create!(id: 52, state_id: 52, state_abbreviation: "AS")
+# DataQualityGrade.create!(id: 53, state_id: 53, state_abbreviation: "PR")
+# # DataQualityGrade.create!(id: 54, state_id: 54, state_abbreviation: "VI")
+# # DataQualityGrade.create!(id: 55, state_id: 55, state_abbreviation: "GU")
+# # DataQualityGrade.create!(id: 56, state_id: 56, state_abbreviation: "MP")
+# puts "DataQualityGrades -- END"
 
 puts "CREATE DB ROW Records -- START"
 for state in State.all do
@@ -139,66 +139,66 @@ for state in State.all do
 end
 puts "CREATE DB ROW Records -- END"
 
-puts "Stay At Home Order -- START"
-#https://www.businessinsider.com/us-map-stay-at-home-orders-lockdowns-2020-3
-StayAtHomeOrder.create!(date: 20200324, state_id: 1,  order_action: "imposed")  ## Alabama
-StayAtHomeOrder.create!(date: 20200328, state_id: 2,  order_action: "imposed")  ## Alaska
-StayAtHomeOrder.create!(date: 20200424, state_id: 2,  order_action: "lifted")  ## Alaska
-StayAtHomeOrder.create!(date: 20200331, state_id: 3,  order_action: "imposed")  ## Arizona
-# StayAtHomeOrder.create!(date: , state_id: 4,  order_action: "imposed")  ## Arkansas
-StayAtHomeOrder.create!(date: 20200331, state_id: 5,  order_action: "imposed")  ## California
-StayAtHomeOrder.create!(date: 20200326, state_id: 6, order_action: "imposed")  ## Colorado
-StayAtHomeOrder.create!(date: 20200323, state_id: 7, order_action: "imposed")  ## Connecticut
-StayAtHomeOrder.create!(date: 20200324, state_id: 8, order_action: "imposed")  ## Delaware
-StayAtHomeOrder.create!(date: 20200403, state_id: 9, order_action: "imposed")  ## Florida
-StayAtHomeOrder.create!(date: 20200403, state_id: 10, order_action: "imposed")  ## Georgia
-StayAtHomeOrder.create!(date: 20200424, state_id: 10, order_action: "lifted")  ## Georgia
-StayAtHomeOrder.create!(date: 20200325, state_id: 11, order_action: "imposed")  ## Hawaii
-StayAtHomeOrder.create!(date: 20200325, state_id: 12, order_action: "imposed")  ## Idaho
-StayAtHomeOrder.create!(date: 20200321, state_id: 13, order_action: "imposed")  ## Illinois
-StayAtHomeOrder.create!(date: 20200324, state_id: 14, order_action: "imposed")  ## Indiana
-# StayAtHomeOrder.create!(date: , state_id: 15, order_action: "imposed")  ## Iowa
-StayAtHomeOrder.create!(date: 20200330, state_id: 16, order_action: "imposed")  ## Kansas
-StayAtHomeOrder.create!(date: 20200326, state_id: 17, order_action: "imposed")  ## Kentucky
-StayAtHomeOrder.create!(date: 20200323, state_id: 18, order_action: "imposed")  ## Louisiana
-StayAtHomeOrder.create!(date: 20200402, state_id: 19, order_action: "imposed")  ## Maine
-StayAtHomeOrder.create!(date: 20200330, state_id: 20, order_action: "imposed")  ## Maryland
-StayAtHomeOrder.create!(date: 20200324, state_id: 21, order_action: "imposed")  ## Massachusetts
-StayAtHomeOrder.create!(date: 20200324, state_id: 22, order_action: "imposed")  ## Michigan
-StayAtHomeOrder.create!(date: 20200327, state_id: 23, order_action: "imposed")  ## Minnesota
-StayAtHomeOrder.create!(date: 20200403, state_id: 24, order_action: "imposed")  ## Mississippi
-StayAtHomeOrder.create!(date: 20020406, state_id: 25, order_action: "imposed")  ## Missouri
-StayAtHomeOrder.create!(date: 20200328, state_id: 26, order_action: "imposed")  ## Montana
-# StayAtHomeOrder.create!(date: , state_id: 27, order_action: "imposed")  ## Nebraska
-StayAtHomeOrder.create!(date: 20200401, state_id: 28, order_action: "imposed")  ## Nevada
-StayAtHomeOrder.create!(date: 20200327, state_id: 29, order_action: "imposed")  ## New Hampshire
-StayAtHomeOrder.create!(date: 20200321, state_id: 30, order_action: "imposed")  ## New Jersey
-StayAtHomeOrder.create!(date: 20200324, state_id: 31, order_action: "imposed")  ## New Mexico
-StayAtHomeOrder.create!(date: 20200322, state_id: 32, order_action: "imposed")  ## New York
-StayAtHomeOrder.create!(date: 20200330, state_id: 33, order_action: "imposed")  ## North Carolina
-# StayAtHomeOrder.create!(date: , state_id: 34, order_action: "imposed")  ## North Dakota
-StayAtHomeOrder.create!(date: 20200323, state_id: 35, order_action: "imposed")  ## Ohio
-# StayAtHomeOrder.create!(date: , state_id: 36, order_action: "imposed")  ## Oklahoma
-StayAtHomeOrder.create!(date: 20200323, state_id: 37, order_action: "imposed")  ## Oregon
-StayAtHomeOrder.create!(date: 20200401, state_id: 38, order_action: "imposed")  ## Pennsylvania
-StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  ## Rhode Island
-StayAtHomeOrder.create!(date: 20200407, state_id: 40, order_action: "imposed")  ## South Carolina
-StayAtHomeOrder.create!(date: 20200420, state_id: 40, order_action: "lifted")  ## South Carolina
-# StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
-StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
-StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  ## Texas
-# StayAtHomeOrder.create!(date: , state_id: 44, order_action: "imposed")  ## Utah
-StayAtHomeOrder.create!(date: 20200325, state_id: 45, order_action: "imposed")  ## Vermont
-StayAtHomeOrder.create!(date: 20200330, state_id: 46, order_action: "imposed")  ## Virginia
-StayAtHomeOrder.create!(date: 20200323, state_id: 47, order_action: "imposed")  ## Washington
-StayAtHomeOrder.create!(date: 20200327, state_id: 48, order_action: "imposed")  ## Washington DC
-StayAtHomeOrder.create!(date: 20200324, state_id: 49, order_action: "imposed")  ## West Virginia
-StayAtHomeOrder.create!(date: 20200325, state_id: 50, order_action: "imposed")  ## Wisconsin
-# StayAtHomeOrder.create!(date: , state_id: 51, order_action: "imposed")  ## Wyoming
-# StayAtHomeOrder.create!(date: , state_id: 52, order_action: "imposed")  ## American Samoa
-StayAtHomeOrder.create!(date: 20200330, state_id: 53, order_action: "imposed")  ## Puerto Rico
-# StayAtHomeOrder.create!(date: , state_id: 54, order_action: "imposed")  ## US Virgin Islands
-# StayAtHomeOrder.create!(date: , state_id: 55, order_action: "imposed")  ## Guam
-# StayAtHomeOrder.create!(date: , state_id: 56, order_action: "imposed")  ## Northern Mariana islands
-puts "Stay At Home Order -- End"
+# puts "Stay At Home Order -- START"
+# #https://www.businessinsider.com/us-map-stay-at-home-orders-lockdowns-2020-3
+# StayAtHomeOrder.create!(date: 20200324, state_id: 1,  order_action: "imposed")  ## Alabama
+# StayAtHomeOrder.create!(date: 20200328, state_id: 2,  order_action: "imposed")  ## Alaska
+# StayAtHomeOrder.create!(date: 20200424, state_id: 2,  order_action: "lifted")  ## Alaska
+# StayAtHomeOrder.create!(date: 20200331, state_id: 3,  order_action: "imposed")  ## Arizona
+# # StayAtHomeOrder.create!(date: , state_id: 4,  order_action: "imposed")  ## Arkansas
+# StayAtHomeOrder.create!(date: 20200331, state_id: 5,  order_action: "imposed")  ## California
+# StayAtHomeOrder.create!(date: 20200326, state_id: 6, order_action: "imposed")  ## Colorado
+# StayAtHomeOrder.create!(date: 20200323, state_id: 7, order_action: "imposed")  ## Connecticut
+# StayAtHomeOrder.create!(date: 20200324, state_id: 8, order_action: "imposed")  ## Delaware
+# StayAtHomeOrder.create!(date: 20200403, state_id: 9, order_action: "imposed")  ## Florida
+# StayAtHomeOrder.create!(date: 20200403, state_id: 10, order_action: "imposed")  ## Georgia
+# StayAtHomeOrder.create!(date: 20200424, state_id: 10, order_action: "lifted")  ## Georgia
+# StayAtHomeOrder.create!(date: 20200325, state_id: 11, order_action: "imposed")  ## Hawaii
+# StayAtHomeOrder.create!(date: 20200325, state_id: 12, order_action: "imposed")  ## Idaho
+# StayAtHomeOrder.create!(date: 20200321, state_id: 13, order_action: "imposed")  ## Illinois
+# StayAtHomeOrder.create!(date: 20200324, state_id: 14, order_action: "imposed")  ## Indiana
+# # StayAtHomeOrder.create!(date: , state_id: 15, order_action: "imposed")  ## Iowa
+# StayAtHomeOrder.create!(date: 20200330, state_id: 16, order_action: "imposed")  ## Kansas
+# StayAtHomeOrder.create!(date: 20200326, state_id: 17, order_action: "imposed")  ## Kentucky
+# StayAtHomeOrder.create!(date: 20200323, state_id: 18, order_action: "imposed")  ## Louisiana
+# StayAtHomeOrder.create!(date: 20200402, state_id: 19, order_action: "imposed")  ## Maine
+# StayAtHomeOrder.create!(date: 20200330, state_id: 20, order_action: "imposed")  ## Maryland
+# StayAtHomeOrder.create!(date: 20200324, state_id: 21, order_action: "imposed")  ## Massachusetts
+# StayAtHomeOrder.create!(date: 20200324, state_id: 22, order_action: "imposed")  ## Michigan
+# StayAtHomeOrder.create!(date: 20200327, state_id: 23, order_action: "imposed")  ## Minnesota
+# StayAtHomeOrder.create!(date: 20200403, state_id: 24, order_action: "imposed")  ## Mississippi
+# StayAtHomeOrder.create!(date: 20020406, state_id: 25, order_action: "imposed")  ## Missouri
+# StayAtHomeOrder.create!(date: 20200328, state_id: 26, order_action: "imposed")  ## Montana
+# # StayAtHomeOrder.create!(date: , state_id: 27, order_action: "imposed")  ## Nebraska
+# StayAtHomeOrder.create!(date: 20200401, state_id: 28, order_action: "imposed")  ## Nevada
+# StayAtHomeOrder.create!(date: 20200327, state_id: 29, order_action: "imposed")  ## New Hampshire
+# StayAtHomeOrder.create!(date: 20200321, state_id: 30, order_action: "imposed")  ## New Jersey
+# StayAtHomeOrder.create!(date: 20200324, state_id: 31, order_action: "imposed")  ## New Mexico
+# StayAtHomeOrder.create!(date: 20200322, state_id: 32, order_action: "imposed")  ## New York
+# StayAtHomeOrder.create!(date: 20200330, state_id: 33, order_action: "imposed")  ## North Carolina
+# # StayAtHomeOrder.create!(date: , state_id: 34, order_action: "imposed")  ## North Dakota
+# StayAtHomeOrder.create!(date: 20200323, state_id: 35, order_action: "imposed")  ## Ohio
+# # StayAtHomeOrder.create!(date: , state_id: 36, order_action: "imposed")  ## Oklahoma
+# StayAtHomeOrder.create!(date: 20200323, state_id: 37, order_action: "imposed")  ## Oregon
+# StayAtHomeOrder.create!(date: 20200401, state_id: 38, order_action: "imposed")  ## Pennsylvania
+# StayAtHomeOrder.create!(date: 20200328, state_id: 39, order_action: "imposed")  ## Rhode Island
+# StayAtHomeOrder.create!(date: 20200407, state_id: 40, order_action: "imposed")  ## South Carolina
+# StayAtHomeOrder.create!(date: 20200420, state_id: 40, order_action: "lifted")  ## South Carolina
+# # StayAtHomeOrder.create!(date: , state_id: 41, order_action: "imposed")  ## South Dakota
+# StayAtHomeOrder.create!(date: 20200331, state_id: 42, order_action: "imposed")  ## Tennessee
+# StayAtHomeOrder.create!(date: 20200402, state_id: 43, order_action: "imposed")  ## Texas
+# # StayAtHomeOrder.create!(date: , state_id: 44, order_action: "imposed")  ## Utah
+# StayAtHomeOrder.create!(date: 20200325, state_id: 45, order_action: "imposed")  ## Vermont
+# StayAtHomeOrder.create!(date: 20200330, state_id: 46, order_action: "imposed")  ## Virginia
+# StayAtHomeOrder.create!(date: 20200323, state_id: 47, order_action: "imposed")  ## Washington
+# StayAtHomeOrder.create!(date: 20200327, state_id: 48, order_action: "imposed")  ## Washington DC
+# StayAtHomeOrder.create!(date: 20200324, state_id: 49, order_action: "imposed")  ## West Virginia
+# StayAtHomeOrder.create!(date: 20200325, state_id: 50, order_action: "imposed")  ## Wisconsin
+# # StayAtHomeOrder.create!(date: , state_id: 51, order_action: "imposed")  ## Wyoming
+# # StayAtHomeOrder.create!(date: , state_id: 52, order_action: "imposed")  ## American Samoa
+# StayAtHomeOrder.create!(date: 20200330, state_id: 53, order_action: "imposed")  ## Puerto Rico
+# # StayAtHomeOrder.create!(date: , state_id: 54, order_action: "imposed")  ## US Virgin Islands
+# # StayAtHomeOrder.create!(date: , state_id: 55, order_action: "imposed")  ## Guam
+# # StayAtHomeOrder.create!(date: , state_id: 56, order_action: "imposed")  ## Northern Mariana islands
+# puts "Stay At Home Order -- End"
 # 
