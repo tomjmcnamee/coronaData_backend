@@ -18,7 +18,8 @@ class Api::V1::DbUpdateController < ApplicationController
 
     def Daily5pUpdate
         if request.headers["DailyUpdate"] === ENV["DAILYUPDATE_PASSWORD"]
-            currentDate = Time.now.strftime("%Y%m%d").to_i
+            # currentDate = Time.now.strftime("%Y%m%d").to_i
+            currentDate = 20201203
             timeStart = Time.now
             if RawStat.checkToSeeIfTodaysDataIsAvailable(currentDate)
                 datesInRaw = RawStat.distinct.pluck("date")

@@ -51,7 +51,7 @@ class RawStat < ApplicationRecord
             state: x["state"],
             positive: x["positive"],
             negative: x["negative"],
-            hospitalized: x["hospitalizedCumulative"],
+            hospitalized: x["hospitalizedCurrently"],
             death: x["death"],
             total: x["totalTestResults"],
             dateChecked: x["dateChecked"],
